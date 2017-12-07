@@ -1,56 +1,20 @@
 import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
 import { OutputNode } from '../nodes/OutputNode'
-import { SockoNodeType } from '../nodes/SockoNodeType'
 import { AbstractProcessor } from './AbstractProcessor'
 import { Direction } from 'js-hierarchy'
-import { NodeBuilder } from '../nodes/NodeBuilder'
-import { RootNode } from '../nodes/RootNode'
+import { SockoNodeType } from '../nodes/SockoNodeType'
+import { SimpleNode } from '../nodes/SimpleNode'
 import Bluebird = require('bluebird')
+import { OutputNodeBuilder } from '../builders/OutputNodeBuilder'
+import { OutputNodeFactory } from '../factories/OutputNodeFactory'
 
-export class OverrideNodeProcessor extends AbstractProcessor {
+export class OverrideNodeProcessor extends AbstractProcessor<SimpleNode> {
 
   constructor () {
-    super('OverrideNodeProcessor')
+    super('OverrideNodeProcessor', SockoNodeType.Simple)
   }
 
-  protected _process (inputNode: SockoNodeInterface, hierarchyNode: SockoNodeInterface): Bluebird<SockoNodeInterface> {
-    if (inputNode.type === SockoNodeType.Simple) {
-      this._log.debug('Found simple node to process. Looking for it in the hierarchy')
-      return this._processSimpleNode(hierarchyNode, inputNode)
-    }
-    let outputNode: SockoNodeInterface
-    if (inputNode.type === SockoNodeType.Root) {
-      outputNode = new NodeBuilder(new RootNode()).build()
-    } else {
-      outputNode = new NodeBuilder(new OutputNode())
-        .withName(inputNode.name)
-        .withContent(inputNode.content)
-        .build() as OutputNode
-    }
-    return Bluebird.reduce<SockoNodeInterface, Array<SockoNodeInterface>>(
-      inputNode.getChildren() as Array<SockoNodeInterface>,
-      (total, current) => {
-        return this._process(current, hierarchyNode)
-          .then(
-            outputNode => {
-              total.push(outputNode)
-              return Bluebird.resolve(total)
-            }
-          )
-      },
-      []
-    )
-      .then(
-        outputNodes => {
-          for (let childNode of outputNodes) {
-            outputNode.addChild(childNode)
-          }
-          return Bluebird.resolve(outputNode)
-        }
-      )
-  }
-
-  private _processSimpleNode (hierarchyNode: SockoNodeInterface, inputNode: SockoNodeInterface): Bluebird<OutputNode> {
+  protected _process (inputNode: SimpleNode, hierarchyNode: SockoNodeInterface): Bluebird<SockoNodeInterface> {
     let exchangeNode: SockoNodeInterface = null
     return hierarchyNode.walk(
       Direction.rootUp,
@@ -72,9 +36,9 @@ export class OverrideNodeProcessor extends AbstractProcessor {
       .then(
         () => {
           if (exchangeNode) {
-            return Bluebird.resolve(new NodeBuilder(new OutputNode()).fromNode(exchangeNode).build() as OutputNode)
+            return Bluebird.resolve(new OutputNodeFactory().fromNode(exchangeNode))
           } else {
-            return Bluebird.resolve(new NodeBuilder(new OutputNode()).fromNode(inputNode).build() as OutputNode)
+            return Bluebird.resolve(new OutputNodeFactory().fromNode(inputNode))
           }
         }
       )

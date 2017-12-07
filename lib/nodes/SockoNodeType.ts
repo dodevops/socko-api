@@ -25,5 +25,9 @@ export enum SockoNodeType {
   /**
    * The designated root node
    */
-  Root = 'root'
+  Root = 'root',
+  /**
+   * A cartridge
+   */
+  Cartridge = 'cartridge'
 }

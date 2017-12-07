@@ -1,4 +1,6 @@
-export class CartridgeInsertionPoint {
+import { CartridgeInsertionPointInterface } from './CartridgeInsertionPointInterface'
+
+export class CartridgeInsertionPoint implements CartridgeInsertionPointInterface {
   private _isCollector: boolean
 
   private _cartridgeName: string
@@ -7,7 +9,9 @@ export class CartridgeInsertionPoint {
 
   private _index: number
 
-  private _depth: number
+  private _maxDepth: number
+
+  private _cartridgeContent: string
 
   /**
    * Is this insertion point a cartridge collector?
@@ -62,11 +66,23 @@ export class CartridgeInsertionPoint {
    * How far to traverse to root while looking for cartridges, if this is a cartridge collector
    * @return {number}
    */
-  get depth (): number {
-    return this._depth
+  get maxDepth (): number {
+    return this._maxDepth
   }
 
-  set depth (value: number) {
-    this._depth = value
+  set maxDepth (value: number) {
+    this._maxDepth = value
+  }
+
+  /**
+   * The content of the found cartridge(s) to insert at this insertion point
+   * @return {string}
+   */
+  get cartridgeContent (): string {
+    return this._cartridgeContent
+  }
+
+  set cartridgeContent (value: string) {
+    this._cartridgeContent = value
   }
 }

@@ -26,9 +26,11 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "loglevel": "^1.6.0",
-    "js-hierarchy": "^2.1.0"
+    "js-hierarchy": "^2.1.0",
+    "minimatch": "^3.0.4"
   },
   "devDependencies": {
+    "@types/minimatch": "^3.0.1",
     "@types/bluebird": "^3.5.18",
     "@types/chai": "^4.0.7",
     "@types/chai-as-promised": "^7.1.0",
