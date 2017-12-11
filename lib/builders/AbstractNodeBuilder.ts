@@ -1,6 +1,16 @@
+/**
+ * @module socko-api
+ */
+/**
+ */
+
 import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
 import { BuilderInterface } from './BuilderInterface'
+import { Logger } from 'loglevel'
 
+/**
+ * An abstract implementation of [[BuilderInterface]]
+ */
 export abstract class AbstractNodeBuilder<N extends SockoNodeInterface, B extends BuilderInterface<N>> implements BuilderInterface<N> {
   protected _node: N
 
@@ -26,6 +36,11 @@ export abstract class AbstractNodeBuilder<N extends SockoNodeInterface, B extend
   public build (): N {
     return this._node
   }
+
+  /**
+   * Return the current builder object of the overriding class.
+   * @return {B}
+   */
 
   protected abstract getThis (): B
 }

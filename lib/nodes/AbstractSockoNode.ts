@@ -1,7 +1,15 @@
+/**
+ * @module socko-api
+ */
+/**
+ */
 import { AbstractNode } from 'js-hierarchy'
 import { SockoNodeType } from './SockoNodeType'
 import { SockoNodeInterface } from './SockoNodeInterface'
 
+/**
+ * An abstract implementation of [[SockoNodeInterface]]
+ */
 export abstract class AbstractSockoNode extends AbstractNode implements SockoNodeInterface {
   private _type: SockoNodeType
   private _content: string
@@ -13,6 +21,10 @@ export abstract class AbstractSockoNode extends AbstractNode implements SockoNod
 
   get type (): SockoNodeType {
     return this._type
+  }
+
+  set type (value: SockoNodeType) {
+    this._type = value
   }
 
   get content (): string {

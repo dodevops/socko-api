@@ -1,7 +1,17 @@
+/**
+ * @module socko-api
+ */
+/**
+ */
+
 import { AbstractSockoNode } from './AbstractSockoNode'
 import { SockoNodeType } from './SockoNodeType'
+import { SimpleNodeInterface } from './SimpleNodeInterface'
 
-export class SimpleNode extends AbstractSockoNode {
+/**
+ * An implementation of [[SimpleNodeInterface]]
+ */
+export class SimpleNode extends AbstractSockoNode implements SimpleNodeInterface {
 
   constructor () {
     super(SockoNodeType.Simple)

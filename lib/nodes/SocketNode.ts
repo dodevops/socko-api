@@ -1,20 +1,30 @@
+/**
+ * @module socko-api
+ */
+/**
+ */
+
 import { AbstractSockoNode } from './AbstractSockoNode'
 import { SockoNodeType } from './SockoNodeType'
-import { CartridgeInsertionPointInterface } from '../sockets/CartridgeInsertionPointInterface'
+import { CartridgeSlotInterface } from './CartridgeSlotInterface'
+import { SocketNodeInterface } from './SocketNodeInterface'
 
-export class SocketNode extends AbstractSockoNode {
+/**
+ * An implementation of [[SocketNodeInterface]]
+ */
+export class SocketNode extends AbstractSockoNode implements SocketNodeInterface {
 
-  private _insertionPoints: Array<CartridgeInsertionPointInterface>
+  private _slots: Array<CartridgeSlotInterface>
 
   constructor () {
     super(SockoNodeType.Socket)
   }
 
-  get insertionPoints (): Array<CartridgeInsertionPointInterface> {
-    return this._insertionPoints
+  get slots (): Array<CartridgeSlotInterface> {
+    return this._slots
   }
 
-  set insertionPoints (value: Array<CartridgeInsertionPointInterface>) {
-    this._insertionPoints = value
+  set slots (value: Array<CartridgeSlotInterface>) {
+    this._slots = value
   }
 }

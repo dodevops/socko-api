@@ -1,8 +1,13 @@
-import { AbstractSockoNode } from './AbstractSockoNode'
-import { SockoNodeType } from './SockoNodeType'
-import Bluebird = require('bluebird')
-import { InvalidMergeNode } from '../errors/InvalidMergeNode'
+/**
+ * @module socko-api
+ */
+/**
+ */
+
 import { SockoNodeInterface } from './SockoNodeInterface'
 
+/**
+ * A node, that was assembled in a processor
+ */
 export interface OutputNodeInterface extends SockoNodeInterface {
 }

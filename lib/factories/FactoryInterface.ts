@@ -1,10 +1,13 @@
-import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
-import Bluebird = require('bluebird')
-
+/**
+ * @module socko-api
+ */
+/**
+ * An interface for creating reference implementations of the given interfaces
+ */
 export interface FactoryInterface<T> {
+  /**
+   * Create the new implementation and set default values
+   * @return {T}
+   */
   create (): T
-
-  merge? (origin: T, merger: T): Bluebird<T>
-
-  fromNode? (source: SockoNodeInterface): T
 }

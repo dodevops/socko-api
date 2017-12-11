@@ -1,20 +1,26 @@
+/**
+ * @module socko-api
+ */
+/**
+ */
+
 import { AbstractSockoNode } from './AbstractSockoNode'
 import { SockoNodeType } from './SockoNodeType'
+import { BucketNodeInterface } from './BucketNodeInterface'
 
-export class BucketNode extends AbstractSockoNode {
+/**
+ * An implementation of [[BucketNodeInterface]]
+ */
+export class BucketNode extends AbstractSockoNode implements BucketNodeInterface {
 
   private _pattern: string | RegExp
 
-  private _depth: number
+  private _maxDepth: number
 
   constructor () {
     super(SockoNodeType.Bucket)
   }
 
-  /**
-   * The pattern to search for node names. Excepts a glob pattern as a string or a regular expression
-   * @return {string | RegExp}
-   */
   get pattern (): string | RegExp {
     return this._pattern
   }
@@ -23,15 +29,11 @@ export class BucketNode extends AbstractSockoNode {
     this._pattern = value
   }
 
-  /**
-   * How far to go down to the root when looking for matching nodes
-   * @return {number}
-   */
-  get depth (): number {
-    return this._depth
+  get maxDepth (): number {
+    return this._maxDepth
   }
 
-  set depth (value: number) {
-    this._depth = value
+  set maxDepth (value: number) {
+    this._maxDepth = value
   }
 }

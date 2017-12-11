@@ -1,19 +1,25 @@
+/**
+ * @module socko-api
+ */
+/**
+ */
+
 import { AbstractNodeBuilder } from './AbstractNodeBuilder'
 import { SocketNodeFactory } from '../factories/SocketNodeFactory'
 import { SocketNodeInterface } from '../nodes/SocketNodeInterface'
-import { CartridgeInsertionPointInterface } from '../sockets/CartridgeInsertionPointInterface'
+import { CartridgeSlotInterface } from '../nodes/CartridgeSlotInterface'
 
+/**
+ * A builder for [[SocketNodeInterface]]s
+ */
 export class SocketNodeBuilder extends AbstractNodeBuilder<SocketNodeInterface, SocketNodeBuilder> {
 
   constructor () {
     super(new SocketNodeFactory().create())
   }
 
-  public withCartridgeInsertionPoint (cartridgeInsertionPoint: CartridgeInsertionPointInterface): SocketNodeBuilder {
-    if (!this._node.insertionPoints) {
-      this._node.insertionPoints = []
-    }
-    this._node.insertionPoints.push(cartridgeInsertionPoint)
+  public withCartridgeInsertionPoint (cartridgeInsertionPoint: CartridgeSlotInterface): SocketNodeBuilder {
+    this._node.slots.push(cartridgeInsertionPoint)
     return this
   }
 

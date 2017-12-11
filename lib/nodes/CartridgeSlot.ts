@@ -1,6 +1,15 @@
-import { CartridgeInsertionPointInterface } from './CartridgeInsertionPointInterface'
+/**
+ * @module socko-api
+ */
+/**
+ */
 
-export class CartridgeInsertionPoint implements CartridgeInsertionPointInterface {
+import { CartridgeSlotInterface } from './CartridgeSlotInterface'
+
+/**
+ * An implementation of [[CartridgeSlotInterface]]
+ */
+export class CartridgeSlot implements CartridgeSlotInterface {
   private _isCollector: boolean
 
   private _cartridgeName: string

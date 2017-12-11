@@ -29,5 +29,13 @@ export enum SockoNodeType {
   /**
    * A cartridge
    */
-  Cartridge = 'cartridge'
+  Cartridge = 'cartridge',
+  /**
+   * A node, that was skipped on generating output nodes, because the processor couldn't handle it
+   */
+  Skipped = 'skipped',
+  /**
+   * A node, that holds one or more children
+   */
+  Branch = 'branch'
 }
