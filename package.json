@@ -56,5 +56,8 @@
     "grunt-browserify": "^5.0.0",
     "tsify": "^3.0.1",
     "grunt-coveralls": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=6 <=9"
   }
 }
