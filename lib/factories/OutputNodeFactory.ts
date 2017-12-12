@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { InvalidMergeNode } from '../errors/InvalidMergeNode'
 import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
 import { OutputNodeBuilder } from '../builders/OutputNodeBuilder'

@@ -1,8 +1,4 @@
 /**
- * @module socko-api
- */
-
-/**
  * The type of a node extending AbstractSockoNode.
  */
 export enum SockoNodeType {

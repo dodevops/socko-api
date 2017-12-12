@@ -1,8 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
 import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
 import { getLogger } from 'loglevel'
 import { AbstractError } from './AbstractError'

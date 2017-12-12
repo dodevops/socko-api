@@ -1,16 +1,16 @@
-# socko-api - Hierarchical Tree Weaver
+# SOCKO! - Hierarchical Tree Weaver
 
 ## Introduction
 
-SOCKO! is an ETL tool for trees. It walks over the so-called "input" tree, applies various modifications to it and returns the resulting tree.
+SOCKO! is an ETL tool for trees. It walks through an *input tree*, applies various modifications from a *hierarchy tree* to it and returns the *resulting tree*.
 
 This is the core SOCKO api. It's currently the base framework for the SOCKO! command line tool and Grunt helper, that use the API to modify a set of directories in the area of configuration file management. The API is heavily based on [js-hierarchy](https://www.npmjs.com/package/js-hierarchy).
 
 The current features include:
 
-* OverrideProcessor: Use the contents of a node in the hierarchy-tree, that has the same name as a node in the input-tree
-* SocketProcessor: Insert the content of a cartridge node or multiple cartridge modes in the hierarchy-tree into the content of a socket node in the input tree at a specific index
-* BucketProcessor: Collect a bunch of nodes from the hierarchy-tree and put them in a corresponding branch node of the resulting tree
+* Use the contents of a node in the hierarchy-tree, that has the same name as a node in the input-tree
+* Insert the content of one or multiple cartridge node in the hierarchy tree into the content of a socket node in the input tree at a specific index
+* Collect a bunch of nodes from the hierarchy-tree and put them in a corresponding branch node of the resulting tree
 
 ## Nodes and processors
 

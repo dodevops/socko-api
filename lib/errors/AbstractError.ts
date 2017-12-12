@@ -1,8 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
 import { getLogger } from 'loglevel'
 
 /**

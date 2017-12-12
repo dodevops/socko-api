@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { ProcessorInterface } from './ProcessorInterface'
 import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
 import { NeedRootNodeError } from '../errors/NeedRootNodeError'

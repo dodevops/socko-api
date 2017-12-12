@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { AbstractNodeBuilder } from './AbstractNodeBuilder'
 import { SimpleNodeInterface } from '../nodes/SimpleNodeInterface'
 import { SimpleNodeFactory } from '../factories/SimpleNodeFactory'

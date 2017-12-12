@@ -64,15 +64,15 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="socko-api-hierarchical-tree-weaver">socko-api - Hierarchical Tree Weaver</h1>
+				<h1 id="socko-hierarchical-tree-weaver">SOCKO! - Hierarchical Tree Weaver</h1>
 				<h2 id="introduction">Introduction</h2>
-				<p>SOCKO! is an ETL tool for trees. It walks over the so-called &quot;input&quot; tree, applies various modifications to it and returns the resulting tree.</p>
+				<p>SOCKO! is an ETL tool for trees. It walks through an <em>input tree</em>, applies various modifications from a <em>hierarchy tree</em> to it and returns the <em>resulting tree</em>.</p>
 				<p>This is the core SOCKO api. It&#39;s currently the base framework for the SOCKO! command line tool and Grunt helper, that use the API to modify a set of directories in the area of configuration file management. The API is heavily based on <a href="https://www.npmjs.com/package/js-hierarchy">js-hierarchy</a>.</p>
 				<p>The current features include:</p>
 				<ul>
-					<li>OverrideProcessor: Use the contents of a node in the hierarchy-tree, that has the same name as a node in the input-tree</li>
-					<li>SocketProcessor: Insert the content of a cartridge node or multiple cartridge modes in the hierarchy-tree into the content of a socket node in the input tree at a specific index</li>
-					<li>BucketProcessor: Collect a bunch of nodes from the hierarchy-tree and put them in a corresponding branch node of the resulting tree</li>
+					<li>Use the contents of a node in the hierarchy-tree, that has the same name as a node in the input-tree</li>
+					<li>Insert the content of one or multiple cartridge node in the hierarchy tree into the content of a socket node in the input tree at a specific index</li>
+					<li>Collect a bunch of nodes from the hierarchy-tree and put them in a corresponding branch node of the resulting tree</li>
 				</ul>
 				<h2 id="nodes-and-processors">Nodes and processors</h2>
 				<p>The SOCKO! api provides a set of custom js-hierarchy nodes. All nodes implement the interface &quot;SockoNodeInterface&quot;, that adds a &quot;type&quot; and a &quot;content&quot; property. The type references the specific node, that was used and is mainly used to identify the nodes at runtime. The content holds the original or generated content of the node.</p>
@@ -123,10 +123,28 @@
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class="label tsd-is-external">
+						<span>Internals</span>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
+					</li>
+					<li class="label tsd-is-external">
 						<span>Externals</span>
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/socko_api.html">socko-<wbr>api</a>
+						<a href="modules/builders.html">builders</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/errors.html">errors</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/factories.html">factories</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/nodes.html">nodes</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/processors.html">processors</a>
 					</li>
 				</ul>
 			</nav>

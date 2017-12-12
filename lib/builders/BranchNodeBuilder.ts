@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { AbstractNodeBuilder } from './AbstractNodeBuilder'
 import { BranchNodeInterface } from '../nodes/BranchNodeInterface'
 import { BranchNodeFactory } from '../factories/BranchNodeFactory'

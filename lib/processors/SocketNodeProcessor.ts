@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { AbstractProcessor } from './AbstractProcessor'
 import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
 import { SockoNodeType } from '../nodes/SockoNodeType'

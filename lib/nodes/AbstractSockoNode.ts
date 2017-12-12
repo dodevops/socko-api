@@ -1,8 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
 import { AbstractNode } from 'js-hierarchy'
 import { SockoNodeType } from './SockoNodeType'
 import { SockoNodeInterface } from './SockoNodeInterface'

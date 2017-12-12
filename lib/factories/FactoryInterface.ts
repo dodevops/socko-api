@@ -1,7 +1,4 @@
 /**
- * @module socko-api
- */
-/**
  * An interface for creating reference implementations of the given interfaces
  */
 export interface FactoryInterface<T> {

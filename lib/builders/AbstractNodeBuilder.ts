@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
 import { BuilderInterface } from './BuilderInterface'
 import { Logger } from 'loglevel'

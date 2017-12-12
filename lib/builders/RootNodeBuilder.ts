@@ -1,8 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
 import { AbstractNodeBuilder } from './AbstractNodeBuilder'
 import { RootNode } from '../nodes/RootNode'
 import { RootNodeInterface } from '../nodes/RootNodeInterface'

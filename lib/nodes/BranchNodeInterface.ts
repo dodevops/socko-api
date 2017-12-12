@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { SockoNodeInterface } from './SockoNodeInterface'
 
 /**

@@ -1,8 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
 import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
 import { OutputNode } from '../nodes/OutputNode'
 import Bluebird = require('bluebird')

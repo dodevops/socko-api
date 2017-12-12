@@ -1,7 +1,4 @@
 /**
- * @module socko-api-tests
- */
-/**
  * Test the [[OverrideNodeProcessor]]
  */
 
@@ -18,6 +15,16 @@ import Bluebird = require('bluebird')
 import { BranchNodeBuilder } from '../lib/builders/BranchNodeBuilder'
 
 chai.use(chaiAsPromised)
+
+// for Browser tests
+
+if (typeof window !== 'undefined') {
+  mocha.setup(
+    {
+      ui: 'bdd'
+    }
+  )
+}
 
 function getTestInput (): SockoNodeInterface {
   return new RootNodeBuilder()

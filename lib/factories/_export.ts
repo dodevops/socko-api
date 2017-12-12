@@ -1,7 +1,4 @@
 /**
- * @module socko-api
- */
-/**
  * Exported factories
  */
 

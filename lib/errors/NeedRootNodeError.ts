@@ -1,8 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
 import { Node } from 'js-hierarchy'
 import { AbstractError } from './AbstractError'
 

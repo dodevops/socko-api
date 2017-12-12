@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { CartridgeSlotInterface } from '../nodes/CartridgeSlotInterface'
 import { CartridgeSlotFactory } from '../factories/CartridgeSlotFactory'
 

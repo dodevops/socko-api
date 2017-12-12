@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { FactoryInterface } from './FactoryInterface'
 import { SimpleNodeInterface } from '../nodes/SimpleNodeInterface'
 import { SimpleNode } from '../nodes/SimpleNode'

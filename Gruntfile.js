@@ -79,9 +79,46 @@ module.exports = function (grunt) {
         options: {
           out: 'docs/',
           name: 'socko',
-          readme: 'README.md'
+          readme: 'README.md',
+          "external-modulemap": '.*/lib/([^/]*)/.*'
         },
         src: ['index.ts']
+      }
+    },
+    browserify: {
+      default: {
+        options: {
+          plugin: [
+            [
+              'tsify',
+              {}
+            ]
+          ],
+          browserifyOptions: {
+            standalone: 'jshierarchy'
+          }
+        },
+        files: {
+          'browser.js': ['js-hierarchy.ts']
+        }
+      },
+      test: {
+        options: {
+          plugin: [
+            [
+              'tsify',
+              {}
+            ]
+          ]
+        },
+        files: {
+          'test/test.browser.js': ['test/**/*.ts']
+        }
+      },
+    },
+    coveralls: {
+      default: {
+        src: 'test/coverage/reports/lcov.info'
       }
     }
   })
@@ -94,6 +131,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-typedoc')
+  grunt.loadNpmTasks('grunt-browserify')
+  grunt.loadNpmTasks('grunt-coveralls')
 
   grunt.registerTask(
     'build',
@@ -136,6 +175,14 @@ module.exports = function (grunt) {
     [
       'test',
       'doc'
+    ]
+  )
+
+  grunt.registerTask(
+    'browsertest',
+    [
+      'build',
+      'browserify:test'
     ]
   )
 

@@ -1,7 +1,4 @@
 /**
- * @module socko-api-tests
- */
-/**
  * Test the [[BucketNodeProcessor]]
  */
 
@@ -19,6 +16,16 @@ import chaiAsPromised = require('chai-as-promised')
 import Bluebird = require('bluebird')
 
 chai.use(chaiAsPromised)
+
+// for Browser tests
+
+if (typeof window !== 'undefined') {
+  mocha.setup(
+    {
+      ui: 'bdd'
+    }
+  )
+}
 
 function getTestInput (): SockoNodeInterface {
   return new RootNodeBuilder()

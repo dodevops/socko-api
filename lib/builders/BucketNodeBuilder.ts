@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { BucketNodeInterface } from '../nodes/BucketNodeInterface'
 import { AbstractNodeBuilder } from './AbstractNodeBuilder'
 import { BucketNodeFactory } from '../factories/BucketNodeFactory'

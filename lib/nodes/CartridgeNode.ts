@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { AbstractSockoNode } from './AbstractSockoNode'
 import { SockoNodeType } from './SockoNodeType'
 import { CartridgeNodeInterface } from './CartridgeNodeInterface'

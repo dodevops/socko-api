@@ -1,7 +1,4 @@
 /**
- * @module socko-api
- */
-/**
  * An interface describing a [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) for creating nodes
  */
 export interface BuilderInterface<T> {

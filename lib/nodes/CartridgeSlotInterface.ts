@@ -1,7 +1,4 @@
 /**
- * @module socko-api
- */
-/**
  * A slot of a [[SocketNodeInterface]]. Inserts content of one or more cartridges at an index of the socket node.
  */
 export interface CartridgeSlotInterface {

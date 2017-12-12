@@ -1,9 +1,3 @@
-/**
- * @module socko-api
- */
-/**
- */
-
 import { AbstractNodeBuilder } from './AbstractNodeBuilder'
 import { SkippedNodeInterface } from '../nodes/SkippedNodeInterface'
 import { SkippedNodeFactory } from '../factories/SkippedNodeFactory'
