@@ -18,6 +18,50 @@ The current features include:
 
 For details, see the [API documentation](https://dodevops.github.io/socko-api/)
 
+## Usage
+
+### Typescript
+
+The module includes the complete type definitions for Typescript
+applications. Simply install the module and you're ready to go:
+
+```typescript
+import {RootNodeBuilder} from 'socko-api';
+
+let rootNode: RootNodeInterface = new RootNodeBuilder().build();
+```
+
+### Node.js
+
+After installing the module, use it with require():
+
+```javascript
+var sockoApi = require('socko-api');
+
+var rootNode = new sockoApi.RootNodeBuilder().build();
+```
+
+### Browser
+
+Install the module and include the browser script:
+
+```html
+<script type="text/javascript" src="node_modules/socko-api/browser.min.js"></script>
+```
+
+or use the jsDelivr CDN hosted version:
+```html
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/socko.api/browser.min.js"></script>
+```
+
+With this the global namespace will include a "sockoapi" object:
+
+```javascript
+var rootNode = new sockoapi.RootNodeBuilder().build();
+```
+
+After that, everything's right as working in Node.js.
+
 ## Nodes and processors
 
 The SOCKO! api provides a set of custom js-hierarchy nodes. All nodes implement the interface "SockoNodeInterface", that adds a "type" and a "content" property. The type references the specific node, that was used and is mainly used to identify the nodes at runtime. The content holds the original or generated content of the node.

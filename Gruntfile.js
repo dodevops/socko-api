@@ -140,11 +140,11 @@ module.exports = function (grunt) {
             ]
           ],
           browserifyOptions: {
-            standalone: 'jshierarchy'
+            standalone: 'sockoapi'
           }
         },
         files: {
-          'browser.js': ['js-hierarchy.ts']
+          'browser.js': ['index.ts']
         }
       },
       test: {
