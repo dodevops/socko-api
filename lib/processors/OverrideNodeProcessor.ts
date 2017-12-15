@@ -26,6 +26,7 @@ export class OverrideNodeProcessor extends AbstractProcessor<SimpleNodeInterface
 
   protected _process (inputNode: SimpleNodeInterface, hierarchyNode: SockoNodeInterface): Bluebird<SockoNodeInterface> {
     let exchangeNode: SockoNodeInterface = null
+    let outputNode = new OutputNodeBuilder().withName(inputNode.name).build()
 
     this._getLog().debug(`Walking through the hierarchy tree to find an override eligible node for ${inputNode.name}`)
     return hierarchyNode.walk(
@@ -47,15 +48,22 @@ export class OverrideNodeProcessor extends AbstractProcessor<SimpleNodeInterface
       .then(
         () => {
           if (exchangeNode) {
-            return Bluebird.resolve(
-              new OutputNodeBuilder().withName(exchangeNode.name).withContent(exchangeNode.content).build()
-            )
+            this._getLog().debug('Using override node content')
+            return exchangeNode.readContent()
           } else {
             this._getLog().debug('Using original node content')
-            return Bluebird.resolve(
-              new OutputNodeBuilder().withName(inputNode.name).withContent(inputNode.content).build()
-            )
+            return inputNode.readContent()
           }
+        }
+      )
+      .then(
+        value => {
+          return outputNode.writeContent(value)
+        }
+      )
+      .then(
+        () => {
+          return outputNode
         }
       )
   }

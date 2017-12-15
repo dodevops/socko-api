@@ -67,19 +67,19 @@ function getTestHierarchy (): SockoNodeInterface {
         .withChild(
           new SimpleNodeBuilder()
             .withName('bucketItem1')
-            .withContent('bucketContent1')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketContent1') })
             .build()
         )
         .withChild(
           new SimpleNodeBuilder()
             .withName('bucketItem2')
-            .withContent('bucketContent2')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketContent2') })
             .build()
         )
         .withChild(
           new SimpleNodeBuilder()
             .withName('notEligibleItem')
-            .withContent('nothing')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('nothing') })
             .build()
         )
         .build()
@@ -91,13 +91,13 @@ function getTestHierarchy (): SockoNodeInterface {
         .withChild(
           new SimpleNodeBuilder()
             .withName('bucketItem1')
-            .withContent('bucketContent1')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketContent1') })
             .build()
         )
         .withChild(
           new SimpleNodeBuilder()
             .withName('bucketItem2')
-            .withContent('bucketContent2')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketContent2') })
             .build()
         )
         .build()
@@ -109,13 +109,13 @@ function getTestHierarchy (): SockoNodeInterface {
         .withChild(
           new SimpleNodeBuilder()
             .withName('bucketItem1')
-            .withContent('bucketContent1')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketContent1') })
             .build()
         )
         .withChild(
           new SimpleNodeBuilder()
             .withName('bucketItem2')
-            .withContent('bucketContent2')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketContent2') })
             .build()
         )
         .build()
@@ -127,13 +127,13 @@ function getTestHierarchy (): SockoNodeInterface {
         .withChild(
           new SimpleNodeBuilder()
             .withName('bucketItem1')
-            .withContent('bucketContent1')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketContent1') })
             .build()
         )
         .withChild(
           new SimpleNodeBuilder()
             .withName('bucketItem2')
-            .withContent('bucketContent2')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketContent2') })
             .build()
         )
         .build()
@@ -149,13 +149,13 @@ function getTestHierarchy (): SockoNodeInterface {
             .withChild(
               new SimpleNodeBuilder()
                 .withName('bucketItem1')
-                .withContent('bucketSubContent1')
+                .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketSubContent1') })
                 .build()
             )
             .withChild(
               new SimpleNodeBuilder()
                 .withName('bucketItem3')
-                .withContent('bucketSubContent3')
+                .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketSubContent3') })
                 .build()
             )
             .build()
@@ -167,13 +167,13 @@ function getTestHierarchy (): SockoNodeInterface {
             .withChild(
               new SimpleNodeBuilder()
                 .withName('bucketItem1')
-                .withContent('bucketSubContent1')
+                .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketSubContent1') })
                 .build()
             )
             .withChild(
               new SimpleNodeBuilder()
                 .withName('bucketItem3')
-                .withContent('bucketSubContent3')
+                .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketSubContent3') })
                 .build()
             )
             .build()
@@ -185,13 +185,13 @@ function getTestHierarchy (): SockoNodeInterface {
             .withChild(
               new SimpleNodeBuilder()
                 .withName('bucketItem1')
-                .withContent('bucketSubContent1')
+                .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketSubContent1') })
                 .build()
             )
             .withChild(
               new SimpleNodeBuilder()
                 .withName('bucketItem3')
-                .withContent('bucketSubContent3')
+                .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketSubContent3') })
                 .build()
             )
             .build()
@@ -206,7 +206,7 @@ function getTestHierarchy (): SockoNodeInterface {
                 .withChild(
                   new SimpleNodeBuilder()
                     .withName('bucketItem1')
-                    .withContent('bucketSubSubContent1')
+                    .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketSubSubContent1') })
                     .build()
                 )
                 .build()
@@ -218,13 +218,13 @@ function getTestHierarchy (): SockoNodeInterface {
                 .withChild(
                   new SimpleNodeBuilder()
                     .withName('bucketItem1')
-                    .withContent('bucketSubSubContent1')
+                    .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketSubSubContent1') })
                     .build()
                 )
                 .withChild(
                   new SimpleNodeBuilder()
                     .withName('bucketItem4')
-                    .withContent('bucketSubSubContent4')
+                    .withReadContent((): Bluebird<any> => { return Bluebird.resolve('bucketSubSubContent4') })
                     .build()
                 )
                 .build()
@@ -280,16 +280,6 @@ describe(
               value.infiniteDepthBucket.getChildByName('bucketItem3')
             ).to.not.equal(null)
 
-            chai.expect(
-              (value.infiniteDepthBucket.getChildByName('bucketItem1') as OutputNodeInterface).content
-            ).to.equal('bucketSubContent1')
-            chai.expect(
-              (value.infiniteDepthBucket.getChildByName('bucketItem2') as OutputNodeInterface).content
-            ).to.equal('bucketContent2')
-            chai.expect(
-              (value.infiniteDepthBucket.getChildByName('bucketItem3') as OutputNodeInterface).content
-            ).to.equal('bucketSubContent3')
-
             // test maxDepth0
 
             chai.expect(
@@ -298,9 +288,6 @@ describe(
             chai.expect(
               value.maxDepth0Bucket.getChildByName('bucketItem1')
             ).to.not.equal(null)
-            chai.expect(
-              (value.maxDepth0Bucket.getChildByName('bucketItem1') as OutputNodeInterface).content
-            ).to.equal('bucketSubSubContent1')
 
             // test maxDepth1
 
@@ -314,16 +301,6 @@ describe(
               value.maxDepth1Bucket.getChildByName('bucketItem4')
             ).to.not.equal(null)
 
-            chai.expect(
-              (value.maxDepth1Bucket.getChildByName('bucketItem1') as OutputNodeInterface).content
-            ).to.equal('bucketSubSubContent1')
-            chai.expect(
-              (value.maxDepth1Bucket.getChildByName('bucketItem3') as OutputNodeInterface).content
-            ).to.equal('bucketSubContent3')
-            chai.expect(
-              (value.maxDepth1Bucket.getChildByName('bucketItem4') as OutputNodeInterface).content
-            ).to.equal('bucketSubSubContent4')
-
             // test regexp patterns
 
             chai.expect(
@@ -335,6 +312,55 @@ describe(
             chai.expect(
               value.regexpPatternBucket.getChildByName('bucketItem2')
             ).to.not.equal(null)
+
+            // test contents
+
+            return Bluebird.props(
+              {
+                infiniteDepthBucketBucketItem1:
+                  (value.infiniteDepthBucket.getChildByName('bucketItem1') as OutputNodeInterface).readContent(),
+                infiniteDepthBucketBucketItem2:
+                  (value.infiniteDepthBucket.getChildByName('bucketItem2') as OutputNodeInterface).readContent(),
+                infiniteDepthBucketBucketItem3:
+                  (value.infiniteDepthBucket.getChildByName('bucketItem3') as OutputNodeInterface).readContent(),
+                maxDepth0BucketBucketItem1:
+                  (value.maxDepth0Bucket.getChildByName('bucketItem1') as OutputNodeInterface).readContent(),
+                maxDepth1BucketBucketItem1:
+                  (value.maxDepth1Bucket.getChildByName('bucketItem1') as OutputNodeInterface).readContent(),
+                maxDepth1BucketBucketItem3:
+                  (value.maxDepth1Bucket.getChildByName('bucketItem3') as OutputNodeInterface).readContent(),
+                maxDepth1BucketBucketItem4:
+                  (value.maxDepth1Bucket.getChildByName('bucketItem4') as OutputNodeInterface).readContent()
+              }
+            )
+              .then(
+                contents => {
+                  chai.expect(
+                    contents.infiniteDepthBucketBucketItem1
+                  ).to.equal('bucketSubContent1')
+                  chai.expect(
+                    contents.infiniteDepthBucketBucketItem2
+                  ).to.equal('bucketContent2')
+                  chai.expect(
+                    contents.infiniteDepthBucketBucketItem3
+                  ).to.equal('bucketSubContent3')
+
+                  chai.expect(
+                    contents.maxDepth0BucketBucketItem1
+                  ).to.equal('bucketSubSubContent1')
+
+                  chai.expect(
+                    contents.maxDepth1BucketBucketItem1
+                  ).to.equal('bucketSubSubContent1')
+                  chai.expect(
+                    contents.maxDepth1BucketBucketItem3
+                  ).to.equal('bucketSubContent3')
+                  chai.expect(
+                    contents.maxDepth1BucketBucketItem4
+                  ).to.equal('bucketSubSubContent4')
+
+                }
+              )
           }
         )
     })

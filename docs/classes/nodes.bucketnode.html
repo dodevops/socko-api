@@ -119,7 +119,6 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#content" class="tsd-kind-icon">content</a></li>
 								<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="nodes.bucketnode.html#maxdepth" class="tsd-kind-icon">max<wbr>Depth</a></li>
 								<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="nodes.bucketnode.html#pattern" class="tsd-kind-icon">pattern</a></li>
 								<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#type" class="tsd-kind-icon">type</a></li>
@@ -139,11 +138,13 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#getpath" class="tsd-kind-icon">get<wbr>Path</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#getroot" class="tsd-kind-icon">get<wbr>Root</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#isroot" class="tsd-kind-icon">is<wbr>Root</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#readcontent" class="tsd-kind-icon">read<wbr>Content</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#removechild" class="tsd-kind-icon">remove<wbr>Child</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#setdata" class="tsd-kind-icon">set<wbr>Data</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#setparent" class="tsd-kind-icon">set<wbr>Parent</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#tojson" class="tsd-kind-icon">toJSON</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#walk" class="tsd-kind-icon">walk</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.bucketnode.html#writecontent" class="tsd-kind-icon">write<wbr>Content</a></li>
 							</ul>
 						</section>
 					</div>
@@ -162,7 +163,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/BucketNode.ts#L12">lib/nodes/BucketNode.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/BucketNode.ts#L12">lib/nodes/BucketNode.ts:12</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="nodes.bucketnode.html" class="tsd-signature-type">BucketNode</a></h4>
@@ -189,7 +190,7 @@
 					<div class="tsd-signature tsd-kind-icon">_max<wbr>Depth<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/BucketNode.ts#L12">lib/nodes/BucketNode.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/BucketNode.ts#L12">lib/nodes/BucketNode.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -199,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">_pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">RegExp</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/BucketNode.ts#L10">lib/nodes/BucketNode.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/BucketNode.ts#L10">lib/nodes/BucketNode.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -218,40 +219,6 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Accessors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-					<a name="content" class="tsd-anchor"></a>
-					<h3>content</h3>
-					<ul class="tsd-signatures tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> content<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">set</span> content<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#content">content</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/AbstractSockoNode.ts#L25">lib/nodes/AbstractSockoNode.ts:25</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#content">content</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/AbstractSockoNode.ts#L29">lib/nodes/AbstractSockoNode.ts:29</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>value: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
 					<a name="maxdepth" class="tsd-anchor"></a>
 					<h3>max<wbr>Depth</h3>
@@ -263,7 +230,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/BucketNode.ts#L26">lib/nodes/BucketNode.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/BucketNode.ts#L26">lib/nodes/BucketNode.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -271,7 +238,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/BucketNode.ts#L30">lib/nodes/BucketNode.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/BucketNode.ts#L30">lib/nodes/BucketNode.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -295,7 +262,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/BucketNode.ts#L18">lib/nodes/BucketNode.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/BucketNode.ts#L18">lib/nodes/BucketNode.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
@@ -306,7 +273,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/BucketNode.ts#L22">lib/nodes/BucketNode.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/BucketNode.ts#L22">lib/nodes/BucketNode.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -331,7 +298,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#type">type</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/AbstractSockoNode.ts#L17">lib/nodes/AbstractSockoNode.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/AbstractSockoNode.ts#L18">lib/nodes/AbstractSockoNode.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/nodes.sockonodetype.html" class="tsd-signature-type">SockoNodeType</a></h4>
@@ -340,7 +307,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#type">type</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/AbstractSockoNode.ts#L21">lib/nodes/AbstractSockoNode.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/AbstractSockoNode.ts#L22">lib/nodes/AbstractSockoNode.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -608,6 +575,25 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+					<a name="readcontent" class="tsd-anchor"></a>
+					<h3>read<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">read<wbr>Content<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/nodes.bucketnodeinterface.html">BucketNodeInterface</a>.<a href="../interfaces/nodes.bucketnodeinterface.html#readcontent">readContent</a></p>
+								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#readcontent">readContent</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/AbstractSockoNode.ts#L26">lib/nodes/AbstractSockoNode.ts:26</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 					<a name="removechild" class="tsd-anchor"></a>
 					<h3>remove<wbr>Child</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
@@ -732,6 +718,31 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+					<a name="writecontent" class="tsd-anchor"></a>
+					<h3>write<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">write<wbr>Content<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/nodes.bucketnodeinterface.html">BucketNodeInterface</a>.<a href="../interfaces/nodes.bucketnodeinterface.html#writecontent">writeContent</a></p>
+								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#writecontent">writeContent</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/AbstractSockoNode.ts#L30">lib/nodes/AbstractSockoNode.ts:30</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>content: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -797,9 +808,6 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 								<a href="nodes.bucketnode.html#name" class="tsd-kind-icon">name</a>
 							</li>
-							<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited tsd-is-external">
-								<a href="nodes.bucketnode.html#content" class="tsd-kind-icon">content</a>
-							</li>
 							<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
 								<a href="nodes.bucketnode.html#maxdepth" class="tsd-kind-icon">max<wbr>Depth</a>
 							</li>
@@ -843,6 +851,9 @@
 								<a href="nodes.bucketnode.html#isroot" class="tsd-kind-icon">is<wbr>Root</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+								<a href="nodes.bucketnode.html#readcontent" class="tsd-kind-icon">read<wbr>Content</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 								<a href="nodes.bucketnode.html#removechild" class="tsd-kind-icon">remove<wbr>Child</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
@@ -856,6 +867,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 								<a href="nodes.bucketnode.html#walk" class="tsd-kind-icon">walk</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+								<a href="nodes.bucketnode.html#writecontent" class="tsd-kind-icon">write<wbr>Content</a>
 							</li>
 						</ul>
 					</li>

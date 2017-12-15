@@ -1,5 +1,6 @@
 import { Node } from 'js-hierarchy'
 import { SockoNodeType } from './SockoNodeType'
+import Bluebird = require('bluebird')
 
 /**
  * A subset interface for all SOCKO nodes
@@ -11,8 +12,16 @@ export interface SockoNodeInterface extends Node {
   type: SockoNodeType
 
   /**
-   * The raw content of this node
+   * Return the content of this node
+   * @return {Bluebird<any>}
    */
-  content: string
+  readContent (): Bluebird<any>
+
+  /**
+   * Write the content of this node
+   * @param content
+   * @return {Bluebird<void>}
+   */
+  writeContent (content: any): Bluebird<void>
 
 }

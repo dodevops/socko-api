@@ -2,6 +2,7 @@
  * Exported errors
  */
 
+export { AbstractError } from './AbstractError'
 export { InvalidMergeNode } from './InvalidMergeNode'
 export { NeedRootNodeError } from './NeedRootNodeError'
 export { ProcessCalledFromBucketNodeError } from './ProcessCalledFromBucketNodeError'

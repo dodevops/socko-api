@@ -12,8 +12,8 @@ export class SocketNodeBuilder extends AbstractNodeBuilder<SocketNodeInterface, 
     super(new SocketNodeFactory().create())
   }
 
-  public withCartridgeInsertionPoint (cartridgeInsertionPoint: CartridgeSlotInterface): SocketNodeBuilder {
-    this._node.slots.push(cartridgeInsertionPoint)
+  public withCartridgeSlot (cartridgeSlot: CartridgeSlotInterface): SocketNodeBuilder {
+    this._node.slots.push(cartridgeSlot)
     return this
   }
 

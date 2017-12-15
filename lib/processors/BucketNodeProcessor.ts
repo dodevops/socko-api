@@ -29,7 +29,6 @@ export class BucketNodeProcessor extends AbstractProcessor<BucketNodeInterface> 
   protected _process (inputNode: BucketNodeInterface, hierarchyNode: SockoNodeInterface): Bluebird<SockoNodeInterface> {
     let outputNode = new OutputNodeBuilder()
       .withName(inputNode.name)
-      .withContent(inputNode.content)
       .build()
 
     let levels = hierarchyNode.getLevel()
@@ -122,34 +121,51 @@ export class BucketNodeProcessor extends AbstractProcessor<BucketNodeInterface> 
 
     this._getLog().debug('Node matches. Transform this node into an output node.')
 
-    let outputNodeBuilder = new OutputNodeBuilder()
+    let outputNode = new OutputNodeBuilder()
       .withName(node.name)
-      .withContent(node.content)
+      .build()
 
     this._getLog().debug('Checking children of this node.')
 
-    return Bluebird.reduce<SockoNodeInterface, Array<OutputNodeInterface>>(
-      node.getChildren() as Array<SockoNodeInterface>,
-      (total, current) => {
-        return this._getOutputNode(inputNode, current, levels)
-          .then(
-            value => {
-              if (value) {
-                total.push(value)
-              }
-              return Bluebird.resolve(total)
-            }
-          )
-      },
-      []
-    )
+    let contentTask: Bluebird<void>
+
+    if (node.getChildren().length === 0) {
+      contentTask = node.readContent()
+        .then(
+          value => {
+            return outputNode.writeContent(value)
+          }
+        )
+    } else {
+      contentTask = Bluebird.resolve()
+    }
+
+    return contentTask
       .then(
-        outputNodes => {
-          for (let outputNode of outputNodes) {
-            outputNodeBuilder.withChild(outputNode)
+        () => {
+          return Bluebird.reduce<SockoNodeInterface, Array<OutputNodeInterface>>(
+            node.getChildren() as Array<SockoNodeInterface>,
+            (total, current) => {
+              return this._getOutputNode(inputNode, current, levels)
+                .then(
+                  value => {
+                    if (value) {
+                      total.push(value)
+                    }
+                    return Bluebird.resolve(total)
+                  }
+                )
+            },
+            []
+          )
+        })
+      .then(
+        outputChildNodes => {
+          for (let outputChild of outputChildNodes) {
+            outputNode.addChild(outputChild)
           }
           this._getLog().debug('Returning processed node')
-          return outputNodeBuilder.build()
+          return Bluebird.resolve(outputNode)
         }
       )
   }

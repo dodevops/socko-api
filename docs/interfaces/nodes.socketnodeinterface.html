@@ -102,7 +102,6 @@
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#content" class="tsd-kind-icon">content</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="nodes.socketnodeinterface.html#slots" class="tsd-kind-icon">slots</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#type" class="tsd-kind-icon">type</a></li>
@@ -122,11 +121,13 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#getpath" class="tsd-kind-icon">get<wbr>Path</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#getroot" class="tsd-kind-icon">get<wbr>Root</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#isroot" class="tsd-kind-icon">is<wbr>Root</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#readcontent" class="tsd-kind-icon">read<wbr>Content</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#removechild" class="tsd-kind-icon">remove<wbr>Child</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#setdata" class="tsd-kind-icon">set<wbr>Data</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#setparent" class="tsd-kind-icon">set<wbr>Parent</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#tojson" class="tsd-kind-icon">toJSON</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#walk" class="tsd-kind-icon">walk</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.socketnodeinterface.html#writecontent" class="tsd-kind-icon">write<wbr>Content</a></li>
 							</ul>
 						</section>
 					</div>
@@ -134,22 +135,6 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
-					<a name="content" class="tsd-anchor"></a>
-					<h3>content</h3>
-					<div class="tsd-signature tsd-kind-icon">content<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="nodes.sockonodeinterface.html">SockoNodeInterface</a>.<a href="nodes.sockonodeinterface.html#content">content</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/SockoNodeInterface.ts#L16">lib/nodes/SockoNodeInterface.ts:16</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The raw content of this node</p>
-						</div>
-					</div>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
@@ -167,7 +152,7 @@
 					<div class="tsd-signature tsd-kind-icon">slots<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="nodes.cartridgeslotinterface.html" class="tsd-signature-type">CartridgeSlotInterface</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/SocketNodeInterface.ts#L13">lib/nodes/SocketNodeInterface.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/SocketNodeInterface.ts#L13">lib/nodes/SocketNodeInterface.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -184,7 +169,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="nodes.sockonodeinterface.html">SockoNodeInterface</a>.<a href="nodes.sockonodeinterface.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/nodes/SockoNodeInterface.ts#L11">lib/nodes/SockoNodeInterface.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/SockoNodeInterface.ts#L12">lib/nodes/SockoNodeInterface.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -437,6 +422,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+					<a name="readcontent" class="tsd-anchor"></a>
+					<h3>read<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">read<wbr>Content<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="nodes.sockonodeinterface.html">SockoNodeInterface</a>.<a href="nodes.sockonodeinterface.html#readcontent">readContent</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/SockoNodeInterface.ts#L18">lib/nodes/SockoNodeInterface.ts:18</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return the content of this node</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 					<a name="removechild" class="tsd-anchor"></a>
 					<h3>remove<wbr>Child</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
@@ -556,6 +564,35 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+					<a name="writecontent" class="tsd-anchor"></a>
+					<h3>write<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">write<wbr>Content<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="nodes.sockonodeinterface.html">SockoNodeInterface</a>.<a href="nodes.sockonodeinterface.html#writecontent">writeContent</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/nodes/SockoNodeInterface.ts#L25">lib/nodes/SockoNodeInterface.ts:25</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Write the content of this node</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>content: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -655,9 +692,6 @@
 						<a href="nodes.socketnodeinterface.html" class="tsd-kind-icon">Socket<wbr>Node<wbr>Interface</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
-								<a href="nodes.socketnodeinterface.html#content" class="tsd-kind-icon">content</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 								<a href="nodes.socketnodeinterface.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
@@ -700,6 +734,9 @@
 								<a href="nodes.socketnodeinterface.html#isroot" class="tsd-kind-icon">is<wbr>Root</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+								<a href="nodes.socketnodeinterface.html#readcontent" class="tsd-kind-icon">read<wbr>Content</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 								<a href="nodes.socketnodeinterface.html#removechild" class="tsd-kind-icon">remove<wbr>Child</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
@@ -713,6 +750,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 								<a href="nodes.socketnodeinterface.html#walk" class="tsd-kind-icon">walk</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+								<a href="nodes.socketnodeinterface.html#writecontent" class="tsd-kind-icon">write<wbr>Content</a>
 							</li>
 						</ul>
 					</li>

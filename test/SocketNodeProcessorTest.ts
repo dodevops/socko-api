@@ -9,12 +9,11 @@ import { SocketNodeBuilder } from '../lib/builders/SocketNodeBuilder'
 import { CartridgeSlotBuilder } from '../lib/builders/CartridgeSlotBuilder'
 import { SockoNodeInterface } from '../lib/nodes/SockoNodeInterface'
 import { CartridgeNodeBuilder } from '../lib/builders/CartridgeNodeBuilder'
-import { SimpleNodeBuilder } from '../lib/builders/SimpleNodeBuilder'
 import { OutputNodeInterface } from '../lib/nodes/OutputNodeInterface'
+import { BranchNodeBuilder } from '../lib/builders/BranchNodeBuilder'
 import chai = require('chai')
 import chaiAsPromised = require('chai-as-promised')
 import Bluebird = require('bluebird')
-import { BranchNodeBuilder } from '../lib/builders/BranchNodeBuilder'
 
 chai.use(chaiAsPromised)
 
@@ -33,8 +32,8 @@ function getTestInput (): SockoNodeInterface {
     .withChild(
       new SocketNodeBuilder()
         .withName('socketTest')
-        .withContent('>>><<<')
-        .withCartridgeInsertionPoint(
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('>>><<<') })
+        .withCartridgeSlot(
           new CartridgeSlotBuilder()
             .withCartridgeName('testCartridge1')
             .withIndex(3)
@@ -45,8 +44,8 @@ function getTestInput (): SockoNodeInterface {
     .withChild(
       new SocketNodeBuilder()
         .withName('socketTestCollectorInfinite')
-        .withContent('>>><<<')
-        .withCartridgeInsertionPoint(
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('>>><<<') })
+        .withCartridgeSlot(
           new CartridgeSlotBuilder()
             .withIsCollector(true)
             .withCartridgePattern('testCartridge*')
@@ -58,8 +57,8 @@ function getTestInput (): SockoNodeInterface {
     .withChild(
       new SocketNodeBuilder()
         .withName('socketTestCollectorMaxDepth0')
-        .withContent('>>><<<')
-        .withCartridgeInsertionPoint(
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('>>><<<') })
+        .withCartridgeSlot(
           new CartridgeSlotBuilder()
             .withIsCollector(true)
             .withCartridgePattern('testCartridge*')
@@ -72,8 +71,8 @@ function getTestInput (): SockoNodeInterface {
     .withChild(
       new SocketNodeBuilder()
         .withName('socketTestCollectorMaxDepth1')
-        .withContent('>>><<<')
-        .withCartridgeInsertionPoint(
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('>>><<<') })
+        .withCartridgeSlot(
           new CartridgeSlotBuilder()
             .withIsCollector(true)
             .withCartridgePattern('testCartridge*')
@@ -86,8 +85,8 @@ function getTestInput (): SockoNodeInterface {
     .withChild(
       new SocketNodeBuilder()
         .withName('socketTestCollectorRegexp')
-        .withContent('>>><<<')
-        .withCartridgeInsertionPoint(
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('>>><<<') })
+        .withCartridgeSlot(
           new CartridgeSlotBuilder()
             .withIsCollector(true)
             .withCartridgePattern(/testCartridge.*/)
@@ -102,8 +101,8 @@ function getTestInput (): SockoNodeInterface {
         .withChild(
           new SocketNodeBuilder()
             .withName('subNodeSocket')
-            .withContent('>>><<<')
-            .withCartridgeInsertionPoint(
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('>>><<<') })
+            .withCartridgeSlot(
               new CartridgeSlotBuilder()
                 .withCartridgeName('testSubNodeCartridge')
                 .withIndex(3)
@@ -121,19 +120,19 @@ function getTestHierarchy (): SockoNodeInterface {
     .withChild(
       new CartridgeNodeBuilder()
         .withName('testCartridge1')
-        .withContent('cartridgeContent1')
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('cartridgeContent1') })
         .build()
     )
     .withChild(
       new CartridgeNodeBuilder()
         .withName('testCartridge2')
-        .withContent('cartridgeContent2')
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('cartridgeContent2') })
         .build()
     )
     .withChild(
       new CartridgeNodeBuilder()
         .withName('testNotMatchingCartridge')
-        .withContent('')
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('') })
         .build()
     )
     .withChild(
@@ -142,13 +141,13 @@ function getTestHierarchy (): SockoNodeInterface {
         .withChild(
           new CartridgeNodeBuilder()
             .withName('testCartridge1')
-            .withContent('cartridgeSubNodeContent1')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('cartridgeSubNodeContent1') })
             .build()
         )
         .withChild(
           new CartridgeNodeBuilder()
             .withName('testCartridge3')
-            .withContent('cartridgeContent3')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('cartridgeContent3') })
             .build()
         )
         .withChild(
@@ -157,7 +156,7 @@ function getTestHierarchy (): SockoNodeInterface {
             .withChild(
               new CartridgeNodeBuilder()
                 .withName('testCartridge4')
-                .withContent('cartridgeContent4')
+                .withReadContent((): Bluebird<any> => { return Bluebird.resolve('cartridgeContent4') })
                 .build()
             )
             .build()
@@ -165,7 +164,7 @@ function getTestHierarchy (): SockoNodeInterface {
         .withChild(
           new CartridgeNodeBuilder()
             .withName('testSubNodeCartridge')
-            .withContent('cartridgeSubNodeContent')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('cartridgeSubNodeContent') })
             .build()
         )
         .build()
@@ -173,7 +172,7 @@ function getTestHierarchy (): SockoNodeInterface {
     .withChild(
       new CartridgeNodeBuilder()
         .withName('testSubNodeCartridge')
-        .withContent('cartridgeRootContent')
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('cartridgeRootContent') })
         .build()
     )
     .build()
@@ -206,36 +205,50 @@ describe(
         )
         .then(
           value => {
+            return Bluebird.props(
+              {
+                socketTest: (value.socketTest as OutputNodeInterface).readContent(),
+                socketTestCollectorInfinite: (value.socketTestCollectorInfinite as OutputNodeInterface).readContent(),
+                socketTestCollectorMaxDepth0: (value.socketTestCollectorMaxDepth0 as OutputNodeInterface).readContent(),
+                socketTestCollectorMaxDepth1: (value.socketTestCollectorMaxDepth1 as OutputNodeInterface).readContent(),
+                socketTestCollectorRegexp: (value.socketTestCollectorRegexp as OutputNodeInterface).readContent(),
+                subNodeSocket: (value.subNodeSocket as OutputNodeInterface).readContent()
+              }
+            )
+          }
+        )
+        .then(
+          value => {
             chai.expect(
-              (value.socketTest as OutputNodeInterface).content
+              value.socketTest
             ).to.equal('>>>cartridgeSubNodeContent1<<<')
 
             chai.expect(
-              (value.socketTestCollectorInfinite as OutputNodeInterface).content
+              value.socketTestCollectorInfinite
             ).to.equal(
               '>>>cartridgeContent1cartridgeContent2cartridgeSubNodeContent1cartridgeContent3cartridgeContent4<<<'
             )
 
             chai.expect(
-              (value.socketTestCollectorMaxDepth0 as OutputNodeInterface).content
+              value.socketTestCollectorMaxDepth0
             ).to.equal(
               '>>>cartridgeContent4<<<'
             )
 
             chai.expect(
-              (value.socketTestCollectorMaxDepth1 as OutputNodeInterface).content
+              value.socketTestCollectorMaxDepth1
             ).to.equal(
               '>>>cartridgeSubNodeContent1cartridgeContent3cartridgeContent4<<<'
             )
 
             chai.expect(
-              (value.socketTestCollectorRegexp as OutputNodeInterface).content
+              value.socketTestCollectorRegexp
             ).to.equal(
               '>>>cartridgeContent1cartridgeContent2cartridgeSubNodeContent1cartridgeContent3cartridgeContent4<<<'
             )
 
             chai.expect(
-              (value.subNodeSocket as OutputNodeInterface).content
+              value.subNodeSocket
             ).to.equal('>>>cartridgeSubNodeContent<<<')
 
           }

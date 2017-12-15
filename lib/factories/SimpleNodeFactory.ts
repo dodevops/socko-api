@@ -10,7 +10,6 @@ export class SimpleNodeFactory implements FactoryInterface<SimpleNodeInterface> 
   public create (): SimpleNodeInterface {
     let simpleNode = new SimpleNode()
     simpleNode.name = ''
-    simpleNode.content = ''
     return simpleNode
   }
 }

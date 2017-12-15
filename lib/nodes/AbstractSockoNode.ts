@@ -1,13 +1,14 @@
 import { AbstractNode } from 'js-hierarchy'
 import { SockoNodeType } from './SockoNodeType'
 import { SockoNodeInterface } from './SockoNodeInterface'
+import Bluebird = require('bluebird')
 
 /**
  * An abstract implementation of [[SockoNodeInterface]]
  */
 export abstract class AbstractSockoNode extends AbstractNode implements SockoNodeInterface {
   private _type: SockoNodeType
-  private _content: string
+  private _content: any
 
   constructor (type: SockoNodeType) {
     super()
@@ -22,11 +23,12 @@ export abstract class AbstractSockoNode extends AbstractNode implements SockoNod
     this._type = value
   }
 
-  get content (): string {
-    return this._content
+  public readContent (): Bluebird<any> {
+    return Bluebird.resolve(this._content)
   }
 
-  set content (value: string) {
-    this._content = value
+  public writeContent (content: any): Bluebird<void> {
+    this._content = content
+    return Bluebird.resolve()
   }
 }

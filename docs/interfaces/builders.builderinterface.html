@@ -69,13 +69,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>An interface describing a <a href="https://en.wikipedia.org/wiki/Builder_pattern">builder pattern</a> for creating nodes</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
@@ -115,8 +108,9 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="builders.builderinterface.html#build" class="tsd-kind-icon">build</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="builders.builderinterface.html#withchild" class="tsd-kind-icon">with<wbr>Child</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="builders.builderinterface.html#withcontent" class="tsd-kind-icon">with<wbr>Content</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="builders.builderinterface.html#withname" class="tsd-kind-icon">with<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="builders.builderinterface.html#withreadcontent" class="tsd-kind-icon">with<wbr>Read<wbr>Content</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-external"><a href="builders.builderinterface.html#withwritecontent" class="tsd-kind-icon">with<wbr>Write<wbr>Content</a></li>
 							</ul>
 						</section>
 					</div>
@@ -134,7 +128,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/builders/BuilderInterface.ts#L31">lib/builders/BuilderInterface.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/builders/BuilderInterface.ts#L40">lib/builders/BuilderInterface.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -156,7 +150,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/builders/BuilderInterface.ts#L25">lib/builders/BuilderInterface.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/builders/BuilderInterface.ts#L34">lib/builders/BuilderInterface.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -175,37 +169,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-					<a name="withcontent" class="tsd-anchor"></a>
-					<h3>with<wbr>Content</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">with<wbr>Content<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="builders.builderinterface.html" class="tsd-signature-type">BuilderInterface</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/builders/BuilderInterface.ts#L18">lib/builders/BuilderInterface.ts:18</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Set the content of the node</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>content: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>content</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="builders.builderinterface.html" class="tsd-signature-type">BuilderInterface</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
 					<a name="withname" class="tsd-anchor"></a>
 					<h3>with<wbr>Name</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
@@ -215,7 +178,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/0dd6866/lib/builders/BuilderInterface.ts#L11">lib/builders/BuilderInterface.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/builders/BuilderInterface.ts#L13">lib/builders/BuilderInterface.ts:13</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -230,6 +193,95 @@
 									<div class="tsd-comment tsd-typography">
 										<p>name</p>
 									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="builders.builderinterface.html" class="tsd-signature-type">BuilderInterface</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<a name="withreadcontent" class="tsd-anchor"></a>
+					<h3>with<wbr>Read<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">with<wbr>Read<wbr>Content<span class="tsd-signature-symbol">(</span>reader<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="builders.builderinterface.html" class="tsd-signature-type">BuilderInterface</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/builders/BuilderInterface.ts#L20">lib/builders/BuilderInterface.ts:20</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set the content reader of the node</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>reader: <span class="tsd-signature-type">function</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="builders.builderinterface.html" class="tsd-signature-type">BuilderInterface</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+					<a name="withwritecontent" class="tsd-anchor"></a>
+					<h3>with<wbr>Write<wbr>Content</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">with<wbr>Write<wbr>Content<span class="tsd-signature-symbol">(</span>writer<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="builders.builderinterface.html" class="tsd-signature-type">BuilderInterface</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/4a1338e/lib/builders/BuilderInterface.ts#L27">lib/builders/BuilderInterface.ts:27</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Set the content writer of the node</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>writer: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>writer function</p>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>content: <span class="tsd-signature-type">any</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="builders.builderinterface.html" class="tsd-signature-type">BuilderInterface</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -314,10 +366,13 @@
 								<a href="builders.builderinterface.html#withchild" class="tsd-kind-icon">with<wbr>Child</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="builders.builderinterface.html#withcontent" class="tsd-kind-icon">with<wbr>Content</a>
+								<a href="builders.builderinterface.html#withname" class="tsd-kind-icon">with<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-								<a href="builders.builderinterface.html#withname" class="tsd-kind-icon">with<wbr>Name</a>
+								<a href="builders.builderinterface.html#withreadcontent" class="tsd-kind-icon">with<wbr>Read<wbr>Content</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-external">
+								<a href="builders.builderinterface.html#withwritecontent" class="tsd-kind-icon">with<wbr>Write<wbr>Content</a>
 							</li>
 						</ul>
 					</li>

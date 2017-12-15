@@ -87,12 +87,14 @@ export class SockoProcessor implements ProcessorInterface {
 
     }
 
+    let readContentTask: Bluebird<void>
+
     if (merger.type !== SockoNodeType.Skipped) {
       this._log.debug('The merger node was processed. Use its content')
-      processed.content = merger.content
+      readContentTask = merger.readContent()
     } else {
-      this._log.debug('The merger node was skipped. Use the content of the original node')
-      processed.content = origin.content
+      this._log.debug('The merger node was skipped. Use the content and children of the original node')
+      readContentTask = origin.readContent()
       if (merger.getChildren().length === 0) {
         for (let child of origin.getChildren() as Array<SockoNodeInterface>) {
           processed.addChild(child)
@@ -118,9 +120,19 @@ export class SockoProcessor implements ProcessorInterface {
       }
     }
 
-    return Bluebird.all(
-      tasks
-    )
+    return readContentTask
+      .then(
+        value => {
+          return processed.writeContent(value)
+        }
+      )
+      .then(
+        () => {
+          return Bluebird.all(
+            tasks
+          )
+        }
+      )
       .then(
         processedChildNodes => {
           this._log.debug('Adding merged child nodes')

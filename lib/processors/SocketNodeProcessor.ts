@@ -33,65 +33,113 @@ export class SocketNodeProcessor extends AbstractProcessor<SocketNodeInterface> 
 
     let outputNode = new OutputNodeBuilder()
       .withName(inputNode.name)
-      .withContent(inputNode.content)
       .build()
 
     this._getLog().debug(`Gathering cartridges for ${inputNode.slots.length} slots`)
 
-    return Bluebird.reduce<CartridgeSlotInterface, Array<CartridgeSlotInterface>>(
-      inputNode.slots,
-      (memo, item) => {
-        let levels = hierarchyNode.getLevel()
-        this._getLog().debug(`Finding cartridge contents for index ${item.index}`)
-        return hierarchyNode.walk(
-          Direction.rootUp,
-          (node: SockoNodeInterface) => {
-            let cartridgeNodes = this._getCartridgeNodes(node, item, levels)
-            if (cartridgeNodes.length > 0) {
-              if (item.isCollector) {
-                this._getLog().debug('Appending cartridge content with found content')
-                item.cartridgeContent = item.cartridgeContent + cartridgeNodes.reduce(
-                  (previousValue, currentValue) => {
-                    return previousValue.concat(currentValue.content)
-                  },
-                  ''
-                )
-              } else {
-                this._getLog().debug('Setting cartridge content to the new content')
-                item.cartridgeContent = cartridgeNodes[0].content
-              }
-            }
-            levels = levels - 1
-            return Bluebird.resolve()
-          }
-        )
-          .then(
-            () => {
-              memo.push(item)
-              return Bluebird.resolve(memo)
-            }
-          )
-      },
-      []
-    )
+    return inputNode.readContent()
       .then(
-        cartridgeInsertionPoints => {
+        value => {
+          return outputNode.writeContent(value)
+        }
+      )
+      .then(
+        () => {
+          return Bluebird.reduce<CartridgeSlotInterface, Array<CartridgeSlotInterface>>(
+            inputNode.slots,
+            (memo, item) => {
+              let levels = hierarchyNode.getLevel()
+              this._getLog().debug(`Finding cartridge contents for index ${item.index}`)
+              return hierarchyNode.walk(
+                Direction.rootUp,
+                (node: SockoNodeInterface) => {
+                  let cartridgeNodes = this._getCartridgeNodes(node, item, levels)
+                  levels = levels - 1
+                  if (cartridgeNodes.length > 0) {
+                    if (item.isCollector) {
+                      this._getLog().debug('Appending cartridge content with found content')
+                      return Bluebird.reduce<CartridgeNodeInterface, string>(
+                        cartridgeNodes,
+                        (total, current) => {
+                          return current.readContent()
+                            .then(
+                              value => {
+                                return Bluebird.resolve(total.concat(value))
+                              }
+                            )
+                        },
+                        item.cartridgeContent
+                      )
+                        .then(
+                          value => {
+                            item.cartridgeContent = value
+                            return Bluebird.resolve()
+                          }
+                        )
+                    } else {
+                      this._getLog().debug('Setting cartridge content to the new content')
+                      return cartridgeNodes[0].readContent()
+                        .then(
+                          value => {
+                            item.cartridgeContent = value
+                            return Bluebird.resolve()
+                          }
+                        )
+                    }
+                  } else {
+                    return Bluebird.resolve()
+                  }
+                }
+              )
+                .then(
+                  () => {
+                    memo.push(item)
+                    return Bluebird.resolve(memo)
+                  }
+                )
+            },
+            []
+          )
+        }
+      )
+      .then(
+        cartridgeSlots => {
           this._getLog().debug('Inserting cartridges')
-          cartridgeInsertionPoints.sort(
+          cartridgeSlots.sort(
             (a, b) => {
               return (
                 a.index - b.index
               ) * -1
             }
           )
-          for (let insertionPoint of cartridgeInsertionPoints) {
-            outputNode.content = this._insertIntoString(
-              outputNode.content,
-              insertionPoint.index,
-              insertionPoint.cartridgeContent
+          return outputNode.readContent()
+            .then(
+              value => {
+                return Bluebird.reduce<CartridgeSlotInterface, string>(
+                  cartridgeSlots,
+                  (total, current) => {
+                    return Bluebird.resolve(
+                      this._insertIntoString(
+                        total,
+                        current.index,
+                        current.cartridgeContent
+                      )
+                    )
+                  },
+                  value
+                )
+              }
             )
-          }
-          return Bluebird.resolve(outputNode)
+            .then(
+              value => {
+                return outputNode.writeContent(value)
+              }
+            )
+            .then(
+              () => {
+                return Bluebird.resolve(outputNode)
+              }
+            )
         }
       )
 

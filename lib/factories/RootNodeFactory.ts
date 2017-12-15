@@ -14,7 +14,6 @@ export class RootNodeFactory implements FactoryInterface<RootNodeInterface> {
   public create (): RootNodeInterface {
     let rootNode = new RootNode()
     rootNode.name = '_root'
-    rootNode.content = ''
     return rootNode
   }
 

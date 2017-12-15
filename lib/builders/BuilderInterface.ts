@@ -1,6 +1,8 @@
 /**
  * An interface describing a [builder pattern](https://en.wikipedia.org/wiki/Builder_pattern) for creating nodes
  */
+import Bluebird = require('bluebird')
+
 export interface BuilderInterface<T> {
 
   /**
@@ -11,11 +13,18 @@ export interface BuilderInterface<T> {
   withName (name: string): BuilderInterface<T>
 
   /**
-   * Set the content of the node
-   * @param {string} content content
+   * Set the content reader of the node
+   * @param {() => Bluebird<any>} content reader function
    * @return {BuilderInterface<T>}
    */
-  withContent (content: string): BuilderInterface<T>
+  withReadContent (reader: () => Bluebird<any>): BuilderInterface<T>
+
+  /**
+   * Set the content writer of the node
+   * @param {(content: any) => Bluebird<void>} writer writer function
+   * @return {BuilderInterface<T>}
+   */
+  withWriteContent (writer: (content: any) => Bluebird<void>): BuilderInterface<T>
 
   /**
    * Add a child to the node

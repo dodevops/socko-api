@@ -10,7 +10,6 @@ export class SocketNodeFactory implements FactoryInterface<SocketNodeInterface> 
   public create (): SocketNodeInterface {
     let socketNode = new SocketNode()
     socketNode.name = ''
-    socketNode.content = ''
     socketNode.slots = []
     return socketNode
   }

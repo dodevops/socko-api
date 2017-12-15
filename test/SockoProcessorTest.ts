@@ -35,20 +35,20 @@ function getInputNode (): SockoNodeInterface {
     .withChild(
       new SimpleNodeBuilder()
         .withName('testOverride')
-        .withContent('originalContent')
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('originalContent') })
         .build()
     )
     .withChild(
       new SimpleNodeBuilder()
         .withName('testStatic')
-        .withContent('staticContent')
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('staticContent') })
         .build()
     )
     .withChild(
       new SocketNodeBuilder()
         .withName('testSocket')
-        .withContent('>>><<<')
-        .withCartridgeInsertionPoint(
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('>>><<<') })
+        .withCartridgeSlot(
           new CartridgeSlotBuilder()
             .withIndex(3)
             .withCartridgeName('testCartridge')
@@ -67,7 +67,7 @@ function getInputNode (): SockoNodeInterface {
         .withChild(
           new SimpleNodeBuilder()
             .withName('testStaticNodeInBranch')
-            .withContent('staticContentInBranch')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('staticContentInBranch') })
             .build()
         )
         .build()
@@ -80,13 +80,13 @@ function getHierarchyNode (): SockoNodeInterface {
     .withChild(
       new SimpleNodeBuilder()
         .withName('testOverride')
-        .withContent('overriddenContent')
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('overriddenContent') })
         .build()
     )
     .withChild(
       new CartridgeNodeBuilder()
         .withName('testCartridge')
-        .withContent('cartridgeContent')
+        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('cartridgeContent') })
         .build()
     )
     .withChild(
@@ -95,7 +95,7 @@ function getHierarchyNode (): SockoNodeInterface {
         .withChild(
           new SimpleNodeBuilder()
             .withName('testBucketEntry')
-            .withContent('testBucketEntryContent')
+            .withReadContent((): Bluebird<any> => { return Bluebird.resolve('testBucketEntryContent') })
             .build()
         )
         .build()
@@ -127,13 +127,6 @@ describe(
         )
         .then(
           value => {
-            chai.expect(
-              (value.overrideTest as OutputNodeInterface).content
-            ).to.equal('overriddenContent')
-
-            chai.expect(
-              (value.socketTest as OutputNodeInterface).content
-            ).to.equal('>>>cartridgeContent<<<')
 
             chai.expect(
               value.bucketTest.getChildren().length
@@ -142,13 +135,6 @@ describe(
             chai.expect(
               (value.bucketTest.getChildren()[0] as OutputNodeInterface).name
             ).to.equal('testBucketEntry')
-            chai.expect(
-              (value.bucketTest.getChildren()[0] as OutputNodeInterface).content
-            ).to.equal('testBucketEntryContent')
-
-            chai.expect(
-              (value.staticTest as OutputNodeInterface).content
-            ).to.equal('staticContent')
 
             chai.expect(
               value.branchTest.getChildren().length
@@ -157,8 +143,38 @@ describe(
             chai.expect(
               (value.branchTest.getChildren()[0] as OutputNodeInterface).name
             ).to.equal('testStaticNodeInBranch')
+
+            return Bluebird.props(
+              {
+                overrideTest: (value.overrideTest as OutputNodeInterface).readContent(),
+                socketTest: (value.socketTest as OutputNodeInterface).readContent(),
+                bucketTest: (value.bucketTest.getChildren()[0] as OutputNodeInterface).readContent(),
+                staticTest: (value.staticTest as OutputNodeInterface).readContent(),
+                branchTest: (value.branchTest.getChildren()[0] as OutputNodeInterface).readContent()
+              }
+            )
+          }
+        )
+        .then(
+          value => {
             chai.expect(
-              (value.branchTest.getChildren()[0] as OutputNodeInterface).content
+              value.overrideTest
+            ).to.equal('overriddenContent')
+
+            chai.expect(
+              value.socketTest
+            ).to.equal('>>>cartridgeContent<<<')
+
+            chai.expect(
+              value.bucketTest
+            ).to.equal('testBucketEntryContent')
+
+            chai.expect(
+              value.staticTest
+            ).to.equal('staticContent')
+
+            chai.expect(
+              value.branchTest
             ).to.equal('staticContentInBranch')
           }
         )

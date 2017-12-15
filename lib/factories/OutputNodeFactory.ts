@@ -13,7 +13,6 @@ export class OutputNodeFactory implements FactoryInterface<OutputNodeInterface> 
   public create (): OutputNodeInterface {
     let outputNode = new OutputNode()
     outputNode.name = ''
-    outputNode.content = ''
     return outputNode
   }
 

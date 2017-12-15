@@ -10,7 +10,6 @@ export class CartridgeNodeFactory implements FactoryInterface<CartridgeNodeInter
   public create (): CartridgeNodeInterface {
     let cartridgeNode = new CartridgeNode()
     cartridgeNode.name = ''
-    cartridgeNode.content = ''
     return cartridgeNode
   }
 }

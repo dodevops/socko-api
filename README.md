@@ -1,5 +1,9 @@
 # SOCKO! - Hierarchical Tree Weaver
 
+[![Build Status](https://saucelabs.com/buildstatus/socko-api)](https://saucelabs.com/beta/builds/d5873708d20f42289856389b27b6ec13) [![Build Status](https://travis-ci.org/dodevops/socko-api.svg?branch=master)](https://travis-ci.org/dodevops/socko-api) [![Coverage Status](https://coveralls.io/repos/github/dodevops/socko-api/badge.svg?branch=master)](https://coveralls.io/github/dodevops/socko-api?branch=master) [![npm](https://img.shields.io/npm/v/socko-api.svg)](https://www.npmjs.com/package/socko-api)
+
+[![Build Status](https://saucelabs.com/browser-matrix/socko-api.svg)](https://saucelabs.com/beta/builds/d5873708d20f42289856389b27b6ec13)
+
 ## Introduction
 
 SOCKO! is an ETL tool for trees. It walks through an *input tree*, applies various modifications from a *hierarchy tree* to it and returns the *resulting tree*.
@@ -11,6 +15,8 @@ The current features include:
 * Use the contents of a node in the hierarchy-tree, that has the same name as a node in the input-tree
 * Insert the content of one or multiple cartridge node in the hierarchy tree into the content of a socket node in the input tree at a specific index
 * Collect a bunch of nodes from the hierarchy-tree and put them in a corresponding branch node of the resulting tree
+
+For details, see the [API documentation](https://dodevops.github.io/socko-api/)
 
 ## Nodes and processors
 

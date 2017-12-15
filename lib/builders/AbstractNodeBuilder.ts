@@ -1,6 +1,7 @@
 import { SockoNodeInterface } from '../nodes/SockoNodeInterface'
 import { BuilderInterface } from './BuilderInterface'
 import { Logger } from 'loglevel'
+import Bluebird = require('bluebird')
 
 /**
  * An abstract implementation of [[BuilderInterface]]
@@ -17,8 +18,13 @@ export abstract class AbstractNodeBuilder<N extends SockoNodeInterface, B extend
     return this.getThis()
   }
 
-  public withContent (content: string): B {
-    this._node.content = content
+  public withReadContent (reader: () => Bluebird<any>): B {
+    this._node.readContent = reader
+    return this.getThis()
+  }
+
+  public withWriteContent (writer: (content: any) => Bluebird<void>): B {
+    this._node.writeContent = writer
     return this.getThis()
   }
 

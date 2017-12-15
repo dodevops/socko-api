@@ -10,7 +10,6 @@ export class BucketNodeFactory implements FactoryInterface<BucketNodeInterface> 
   public create (): BucketNodeInterface {
     let bucketNode = new BucketNode()
     bucketNode.name = ''
-    bucketNode.content = ''
     bucketNode.maxDepth = -1
     bucketNode.pattern = '*'
     return bucketNode
