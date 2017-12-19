@@ -20,8 +20,7 @@
     "index.js.map",
     "lib/**/*.js",
     "lib/**/*.js.map",
-    "lib/**/*.d.ts",
-    "README.md"
+    "lib/**/*.d.ts"
   ],
   "dependencies": {
     "bluebird": "^3.5.1",
