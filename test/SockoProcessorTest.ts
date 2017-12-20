@@ -14,6 +14,8 @@ import { BranchNodeBuilder } from '../lib/builders/BranchNodeBuilder'
 import { CartridgeNodeBuilder } from '../lib/builders/CartridgeNodeBuilder'
 import { SockoNodeType } from '../lib/nodes/SockoNodeType'
 import { OutputNodeInterface } from '../lib/nodes/OutputNodeInterface'
+import { ProcessorOptionsFactory } from '../lib/options/ProcessorOptionsFactory'
+import { SkippedNodeBuilder } from '../lib/builders/SkippedNodeBuilder'
 import chai = require('chai')
 import chaiAsPromised = require('chai-as-promised')
 import Bluebird = require('bluebird')
@@ -106,8 +108,8 @@ function getHierarchyNode (): SockoNodeInterface {
 describe(
   'SockoProcessor', (): void => {
     let subject = new SockoProcessor()
-    it('should process and merge all nodes', function (): Bluebird<void> {
-      return subject.process(getInputNode(), getHierarchyNode())
+    it('should process and _merge all nodes', function (): Bluebird<void> {
+      return subject.process(getInputNode(), getHierarchyNode(), new ProcessorOptionsFactory().create())
         .then(
           value => {
             chai.expect(
@@ -176,6 +178,28 @@ describe(
             chai.expect(
               value.branchTest
             ).to.equal('staticContentInBranch')
+          }
+        )
+    })
+
+    it('should filter nodes', function (): Bluebird<void> {
+      let options = new ProcessorOptionsFactory().create()
+      options.processResultTreeNode = node => {
+        if (node.name === 'testStatic') {
+          return Bluebird.resolve(new SkippedNodeBuilder().build())
+        }
+        return Bluebird.resolve(node)
+      }
+      return subject.process(getInputNode(), getHierarchyNode(), options)
+        .then(
+          value => {
+            chai.expect(
+              value.type
+            ).to.equal(SockoNodeType.Root)
+
+            return chai.expect(
+              value.getNodeByPath('_root/testStatic')
+            ).to.be.rejectedWith('Node with name testStatic not found')
           }
         )
     })

@@ -1,7 +1,7 @@
 import { SockoNodeInterface } from './SockoNodeInterface'
 
 /**
- * A node, that creates a branch node in the resulting tree and fills it with nodes from the hierarchy tree
+ * A node, that creates a branch node in the result tree and fills it with nodes from the hierarchy tree
  */
 export interface BucketNodeInterface extends SockoNodeInterface {
 

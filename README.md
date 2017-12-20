@@ -14,7 +14,7 @@ The current features include:
 
 * Use the contents of a node in the hierarchy-tree, that has the same name as a node in the input-tree
 * Insert the content of one or multiple cartridge node in the hierarchy tree into the content of a socket node in the input tree at a specific index
-* Collect a bunch of nodes from the hierarchy-tree and put them in a corresponding branch node of the resulting tree
+* Collect a bunch of nodes from the hierarchy-tree and put them in a corresponding branch node of the result tree
 
 For details, see the [API documentation](https://dodevops.github.io/socko-api/)
 
@@ -70,7 +70,7 @@ These nodes are provided by the core API:
 
 * RootNodeInterface: The root of each tree
 * BranchNodeInterface: A node, that holds children
-* SimpleNodeInterface, OutputNodeInterface: A node, that holds content, but no children. The SimpleNode is used in the input- and hierarchy-trees and the OutputNode in the resulting tree.
+* SimpleNodeInterface, OutputNodeInterface: A node, that holds content, but no children. The SimpleNode is used in the input- and hierarchy-trees and the OutputNode in the result tree.
 * SkippedNodeInterface: A node, that was skipped by the current processor
 
 The different features of the SOCKO! api rely on processors, that process specific node types when walking the input tree. So each processor uses additional node types
@@ -79,4 +79,4 @@ The different features of the SOCKO! api rely on processors, that process specif
   - SocketNodeInterface: A "skeleton" node, that holds different insertion slots for cartridge nodes or cartridge collectors to insert content at various parts of the SocketNode content
   - CartridgeNodeInterface: A node, that is inserted into one or more slots of SocketNodes
 * BucketProcessor:
-  - BucketNodeInterface: A node in the input node producing a branch node in the resulting tree collecting SimpleNodes from the hierarchy-tree
+  - BucketNodeInterface: A node in the input node producing a branch node in the result tree collecting SimpleNodes from the hierarchy-tree

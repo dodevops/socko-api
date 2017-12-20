@@ -10,6 +10,7 @@ import { OutputNodeInterface } from '../lib/nodes/OutputNodeInterface'
 import { RootNodeBuilder } from '../lib/builders/RootNodeBuilder'
 import { SimpleNodeBuilder } from '../lib/builders/SimpleNodeBuilder'
 import { BranchNodeBuilder } from '../lib/builders/BranchNodeBuilder'
+import { ProcessorOptionsFactory } from '../lib/options/ProcessorOptionsFactory'
 import chai = require('chai')
 import chaiAsPromised = require('chai-as-promised')
 import Bluebird = require('bluebird')
@@ -109,7 +110,7 @@ describe(
   'OverrideNodeProcessor', function (): void {
     let subject = new OverrideNodeProcessor()
     it('should process a node correctly', function (): Bluebird<void> {
-      return subject.process(getTestInput(), getTestHierarchy())
+      return subject.process(getTestInput(), getTestHierarchy(), new ProcessorOptionsFactory().create())
         .then(
           value => {
             chai.expect(
@@ -160,7 +161,11 @@ describe(
         return getTestHierarchy().getNodeByPath('_root/subNode')
           .then(
             testHierarchy => {
-              return subject.process(getTestInput(), testHierarchy as SockoNodeInterface)
+              return subject.process(
+                getTestInput(),
+                testHierarchy as SockoNodeInterface,
+                new ProcessorOptionsFactory().create()
+              )
             }
           )
           .then(

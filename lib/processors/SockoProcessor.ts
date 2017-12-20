@@ -10,30 +10,36 @@ import { SockoNodeType } from '../nodes/SockoNodeType'
 import { OutputNodeBuilder } from '../builders/OutputNodeBuilder'
 import { BranchNodeBuilder } from '../builders/BranchNodeBuilder'
 import { getLogger, Logger } from 'loglevel'
+import { ProcessorOptionsInterface } from '../options/ProcessorOptionsInterface'
 import Bluebird = require('bluebird')
 
 /**
  * The main SOCKO! processor.
  *
- * This will call all other processors and merge their results together to form one resulting tree.
+ * This will call all other processors and _merge their results together to form one resulting tree.
  */
 export class SockoProcessor implements ProcessorInterface {
 
   private _log: Logger
+  private _options: ProcessorOptionsInterface
 
   constructor () {
     this._log = getLogger('socko-api:SockoProcessor')
   }
 
-  public process (inputNode: SockoNodeInterface, hierarchyNode: SockoNodeInterface): Bluebird<SockoNodeInterface> {
+  public process (inputNode: SockoNodeInterface,
+                  hierarchyNode: SockoNodeInterface,
+                  options: ProcessorOptionsInterface): Bluebird<SockoNodeInterface> {
+
+    this._options = options
 
     this._log.debug('Walking through available processors')
 
     return Bluebird.all(
       [
-        new OverrideNodeProcessor().process(inputNode, hierarchyNode),
-        new BucketNodeProcessor().process(inputNode, hierarchyNode),
-        new SocketNodeProcessor().process(inputNode, hierarchyNode)
+        new OverrideNodeProcessor().process(inputNode, hierarchyNode, options),
+        new BucketNodeProcessor().process(inputNode, hierarchyNode, options),
+        new SocketNodeProcessor().process(inputNode, hierarchyNode, options)
       ]
     )
       .then(
@@ -41,8 +47,8 @@ export class SockoProcessor implements ProcessorInterface {
           this._log.debug('Merging results')
           return Bluebird.reduce<SockoNodeInterface, SockoNodeInterface>(
             processedNodes,
-            (memo, item) => {
-              return this.merge(memo, item)
+            (original, merger) => {
+              return this._merge(original, merger)
                 .then(
                   value => {
                     return Bluebird.resolve(value)
@@ -63,100 +69,92 @@ export class SockoProcessor implements ProcessorInterface {
    *
    * @param {SockoNodeInterface} origin the origin node
    * @param {SockoNodeInterface} merger the node, that is merger over the origin node
-   * @return {Bluebird<SockoNodeInterface>} the result of the merge operation
+   * @return {Bluebird<SockoNodeInterface>} the result of the _merge operation
    */
-  private merge (origin: SockoNodeInterface, merger: SockoNodeInterface): Bluebird<SockoNodeInterface> {
+  private _merge (origin: SockoNodeInterface, merger: SockoNodeInterface): Bluebird<SockoNodeInterface> {
+
+    this._log.debug('Sanity checking merging nodes')
 
     if (origin.name !== merger.name) {
-      this._log.debug('We somehow try to merge two incoherent nodes.')
+      this._log.debug('We somehow try to _merge two incoherent nodes.')
       return Bluebird.reject(new InvalidMergeNode(origin, merger))
     }
 
-    this._log.debug(`Merging node ${origin.name}`)
+    if (origin.type !== SockoNodeType.Skipped && merger.type !== SockoNodeType.Skipped && origin.type !== merger.type) {
+      this._log.debug('Merger and origin had different types.')
+      return Bluebird.reject(new InvalidMergeNode(origin, merger))
+    }
+
+    this._log.debug(`Processing ${origin.name}`)
 
     let processed
 
-    if (origin.type === SockoNodeType.Root) {
-      this._log.debug('Starting a new root node')
+    if (origin.type === SockoNodeType.Root || merger.type === SockoNodeType.Root) {
       processed = new RootNodeBuilder().build()
     } else {
-      this._log.debug('Starting a new output node')
-      processed = new OutputNodeBuilder()
-        .withName(origin.name)
-        .build()
-
+      processed = new BranchNodeBuilder().withName(origin.name).build()
     }
 
-    let readContentTask: Bluebird<void>
+    let tasks: Array<Bluebird<SockoNodeInterface>> = []
 
-    if (merger.type !== SockoNodeType.Skipped) {
-      this._log.debug('The merger node was processed. Use its content')
-      readContentTask = merger.readContent()
-    } else {
-      this._log.debug('The merger node was skipped. Use the content and children of the original node')
-      readContentTask = origin.readContent()
-      if (merger.getChildren().length === 0) {
-        for (let child of origin.getChildren() as Array<SockoNodeInterface>) {
-          processed.addChild(child)
+    for (let originNode of origin.getChildren() as Array<SockoNodeInterface>) {
+      if (originNode.type !== SockoNodeType.Skipped) {
+        if (originNode.type === SockoNodeType.Output) {
+          this._log.debug(`Adding node ${originNode.name}`)
+          tasks.push(Bluebird.resolve(originNode))
+        } else {
+          let mergerChild = merger.getChildByName(originNode.name) as SockoNodeInterface
+          if (mergerChild && mergerChild.type !== SockoNodeType.Skipped) {
+            tasks.push(this._merge(originNode, mergerChild))
+          } else {
+            this._log.debug(`Adding node ${originNode.name}`)
+            tasks.push(Bluebird.resolve(originNode))
+          }
         }
       }
     }
 
-    let tasks: Array<Bluebird<OutputNodeInterface>> = []
-
-    this._log.debug('Merge the children')
-
-    for (let mergerChild of merger.getChildren() as Array<SockoNodeInterface>) {
-      let found = false
-      for (let originChild of origin.getChildren() as Array<SockoNodeInterface>) {
-        if (originChild.name === mergerChild.name) {
-          tasks.push(this.merge(originChild, mergerChild))
-          found = true
+    for (let mergerNode of merger.getChildren() as Array<SockoNodeInterface>) {
+      if (mergerNode.type !== SockoNodeType.Skipped) {
+        if (!origin.getChildByName(mergerNode.name)) {
+          this._log.debug(`Adding node ${mergerNode.name}`)
+          tasks.push(Bluebird.resolve(mergerNode))
         }
-      }
-      if (!found) {
-        this._log.debug(`A node unknown to the origin was found. Add node ${mergerChild.name}`)
-        tasks.push(Bluebird.resolve(mergerChild))
       }
     }
 
-    return readContentTask
+    return Bluebird.all(tasks)
       .then(
-        value => {
-          return processed.writeContent(value)
-        }
-      )
-      .then(
-        () => {
-          return Bluebird.all(
-            tasks
+        processedChildren => {
+          this._log.debug('Running ResultTreeNodeProcessor from options')
+          return Bluebird.reduce<SockoNodeInterface, Array<SockoNodeInterface>>(
+            processedChildren,
+            (total, current) => {
+              return this._options.processResultTreeNode(current)
+                .then(
+                  processedNode => {
+                    if (processedNode.type !== SockoNodeType.Skipped) {
+                      total.push(processedNode)
+                    }
+                    return Bluebird.resolve(total)
+                  }
+                )
+            },
+            []
           )
         }
       )
       .then(
-        processedChildNodes => {
-          this._log.debug('Adding merged child nodes')
-          for (let child of processedChildNodes) {
-            processed.addChild(child)
+        processedChildren => {
+          this._log.debug('Adding procesed children')
+          for (let child of processedChildren) {
+            if (child.type !== SockoNodeType.Skipped) {
+              processed.addChild(child)
+            }
           }
           return Bluebird.resolve(processed)
         }
       )
-      .then(
-        processedNode => {
-          if (processedNode.type !== SockoNodeType.Root && processedNode.getChildren().length > 0) {
-            this._log.debug('The resulting node has children. Convert it to a branch node')
-            let branchNode = new BranchNodeBuilder()
-              .withName(processedNode.name)
-              .build()
-            for (let child of processedNode.getChildren()) {
-              branchNode.addChild(child)
-            }
-            return Bluebird.resolve(branchNode)
-          } else {
-            return Bluebird.resolve(processedNode)
-          }
-        }
-      )
   }
+
 }

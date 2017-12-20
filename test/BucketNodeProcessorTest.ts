@@ -11,6 +11,7 @@ import { RootNodeBuilder } from '../lib/builders/RootNodeBuilder'
 import { BucketNodeBuilder } from '../lib/builders/BucketNodeBuilder'
 import { SimpleNodeBuilder } from '../lib/builders/SimpleNodeBuilder'
 import { BranchNodeBuilder } from '../lib/builders/BranchNodeBuilder'
+import { ProcessorOptionsFactory } from '../lib/options/ProcessorOptionsFactory'
 import chai = require('chai')
 import chaiAsPromised = require('chai-as-promised')
 import Bluebird = require('bluebird')
@@ -244,7 +245,11 @@ describe(
       return getTestHierarchy().getNodeByPath('_root/subNode/subSubNode')
         .then(
           testHierarchy => {
-            return subject.process(getTestInput(), testHierarchy as SockoNodeInterface)
+            return subject.process(
+              getTestInput(),
+              testHierarchy as SockoNodeInterface,
+              new ProcessorOptionsFactory().create()
+            )
           }
         )
         .then(
@@ -369,7 +374,11 @@ describe(
         .then(
           testHierarchy => {
             return chai.expect(
-              subject.process(getTestInput(), testHierarchy as SockoNodeInterface)
+              subject.process(
+                getTestInput(),
+                testHierarchy as SockoNodeInterface,
+                new ProcessorOptionsFactory().create()
+              )
             ).to.be.rejectedWith('Process was called from a bucket node: infiniteDepthBucket')
           }
         )

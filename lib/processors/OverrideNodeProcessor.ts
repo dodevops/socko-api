@@ -6,6 +6,7 @@ import { OutputNodeBuilder } from '../builders/OutputNodeBuilder'
 import { ProcessCalledFromOverrideNodeError } from '../errors/ProcessCalledFromOverrideNodeError'
 import { SimpleNodeInterface } from '../nodes/SimpleNodeInterface'
 import Bluebird = require('bluebird')
+import { ProcessorOptionsInterface } from '../options/ProcessorOptionsInterface'
 
 /**
  * A processor handling overrides of [[SimpleNode]]s
@@ -24,7 +25,8 @@ export class OverrideNodeProcessor extends AbstractProcessor<SimpleNodeInterface
     return [SockoNodeType.Simple]
   }
 
-  protected _process (inputNode: SimpleNodeInterface, hierarchyNode: SockoNodeInterface): Bluebird<SockoNodeInterface> {
+  protected _process (inputNode: SimpleNodeInterface, hierarchyNode: SockoNodeInterface,
+                      options: ProcessorOptionsInterface): Bluebird<SockoNodeInterface> {
     let exchangeNode: SockoNodeInterface = null
     let outputNode = new OutputNodeBuilder().withName(inputNode.name).build()
 
@@ -49,11 +51,12 @@ export class OverrideNodeProcessor extends AbstractProcessor<SimpleNodeInterface
         () => {
           if (exchangeNode) {
             this._getLog().debug('Using override node content')
-            return exchangeNode.readContent()
+            outputNode.readContent = exchangeNode.readContent
           } else {
             this._getLog().debug('Using original node content')
-            return inputNode.readContent()
+            outputNode.readContent = inputNode.readContent
           }
+          return Bluebird.resolve(outputNode)
         }
       )
       .then(
