@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>An interface for a processor processing input and hierarchy trees and returning a resulting tree</p>
+						<p>An interface for a processor processing input and hierarchy trees and returning a result tree</p>
 					</div>
 				</div>
 			</section>
@@ -113,22 +113,39 @@
 					<a name="process" class="tsd-anchor"></a>
 					<h3>process</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">process<span class="tsd-signature-symbol">(</span>inputNode<span class="tsd-signature-symbol">: </span><a href="nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a>, hierarchyNode<span class="tsd-signature-symbol">: </span><a href="nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><a href="nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">process<span class="tsd-signature-symbol">(</span>inputNode<span class="tsd-signature-symbol">: </span><a href="nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a>, hierarchyNode<span class="tsd-signature-symbol">: </span><a href="nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a>, options<span class="tsd-signature-symbol">: </span><a href="options.processoroptionsinterface.html" class="tsd-signature-type">ProcessorOptionsInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><a href="nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/137942e/lib/processors/ProcessorInterface.ts#L9">lib/processors/ProcessorInterface.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/processors/ProcessorInterface.ts#L17">lib/processors/ProcessorInterface.ts:17</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Process an input node with a hierarchy node.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>inputNode: <a href="nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input node to process</p>
+									</div>
 								</li>
 								<li>
 									<h5>hierarchyNode: <a href="nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>hierarchy node to process</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <a href="options.processoroptionsinterface.html" class="tsd-signature-type">ProcessorOptionsInterface</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>processor options</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><a href="nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -163,6 +180,9 @@
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="../modules/nodes.html">nodes</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="../modules/options.html">options</a>
 					</li>
 					<li class="current tsd-kind-external-module tsd-is-external">
 						<a href="../modules/processors.html">processors</a>

@@ -74,16 +74,41 @@
 				<ul>
 					<li>Use the contents of a node in the hierarchy-tree, that has the same name as a node in the input-tree</li>
 					<li>Insert the content of one or multiple cartridge node in the hierarchy tree into the content of a socket node in the input tree at a specific index</li>
-					<li>Collect a bunch of nodes from the hierarchy-tree and put them in a corresponding branch node of the resulting tree</li>
+					<li>Collect a bunch of nodes from the hierarchy-tree and put them in a corresponding branch node of the result tree</li>
 				</ul>
 				<p>For details, see the <a href="https://dodevops.github.io/socko-api/">API documentation</a></p>
+				<h2 id="usage">Usage</h2>
+				<h3 id="typescript">Typescript</h3>
+				<p>The module includes the complete type definitions for Typescript
+				applications. Simply install the module and you&#39;re ready to go:</p>
+				<pre><code class="lang-typescript"><span class="hljs-keyword">import</span> {RootNodeBuilder} <span class="hljs-keyword">from</span> <span class="hljs-string">'socko-api'</span>;
+
+<span class="hljs-keyword">let</span> rootNode: RootNodeInterface = <span class="hljs-keyword">new</span> RootNodeBuilder().build();
+</code></pre>
+				<h3 id="node-js">Node.js</h3>
+				<p>After installing the module, use it with require():</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> sockoApi = <span class="hljs-built_in">require</span>(<span class="hljs-string">'socko-api'</span>);
+
+<span class="hljs-keyword">var</span> rootNode = <span class="hljs-keyword">new</span> sockoApi.RootNodeBuilder().build();
+</code></pre>
+				<h3 id="browser">Browser</h3>
+				<p>Install the module and include the browser script:</p>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_modules/socko-api/browser.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+				<p>or use the jsDelivr CDN hosted version:</p>
+				<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//cdn.jsdelivr.net/npm/socko.api/browser.min.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+				<p>With this the global namespace will include a &quot;sockoapi&quot; object:</p>
+				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> rootNode = <span class="hljs-keyword">new</span> sockoapi.RootNodeBuilder().build();
+</code></pre>
+				<p>After that, everything&#39;s right as working in Node.js.</p>
 				<h2 id="nodes-and-processors">Nodes and processors</h2>
 				<p>The SOCKO! api provides a set of custom js-hierarchy nodes. All nodes implement the interface &quot;SockoNodeInterface&quot;, that adds a &quot;type&quot; and a &quot;content&quot; property. The type references the specific node, that was used and is mainly used to identify the nodes at runtime. The content holds the original or generated content of the node.</p>
 				<p>These nodes are provided by the core API:</p>
 				<ul>
 					<li>RootNodeInterface: The root of each tree</li>
 					<li>BranchNodeInterface: A node, that holds children</li>
-					<li>SimpleNodeInterface, OutputNodeInterface: A node, that holds content, but no children. The SimpleNode is used in the input- and hierarchy-trees and the OutputNode in the resulting tree.</li>
+					<li>SimpleNodeInterface, OutputNodeInterface: A node, that holds content, but no children. The SimpleNode is used in the input- and hierarchy-trees and the OutputNode in the result tree.</li>
 					<li>SkippedNodeInterface: A node, that was skipped by the current processor</li>
 				</ul>
 				<p>The different features of the SOCKO! api rely on processors, that process specific node types when walking the input tree. So each processor uses additional node types</p>
@@ -94,28 +119,9 @@
 						</ul>
 					</li>
 					<li>BucketProcessor:<ul>
-							<li>BucketNodeInterface: A node in the input node producing a branch node in the resulting tree collecting SimpleNodes from the hierarchy-tree</li>
+							<li>BucketNodeInterface: A node in the input node producing a branch node in the result tree collecting SimpleNodes from the hierarchy-tree</li>
 						</ul>
 					</li>
-				</ul>
-				<h2 id="contributing">Contributing</h2>
-				<p>You&#39;d like to contribute to the project? GREAT! Thank you very much.</p>
-				<p>We&#39;re always open for contributions. If you find a bug or need a feature, please simply report it using the GitHub issue tracker. Please be as precise as possible.</p>
-				<p>If you&#39;d like to provide a pull request for something, we kindly ask you to follow these guidelines:</p>
-				<ul>
-					<li>If no matching issue exist, please create one</li>
-					<li>Fork the repository</li>
-					<li>Create a branch in your fork. You might call this branch issue-<issue number> for example.</li>
-					<li>Write a test or extend the current testsuites, that will trigger your found bug or use your new feature. Run the test. It will turn red.</li>
-					<li>Write the new feature or fix the bug and tweak it until your test is green</li>
-					<li>Don&#39;t use comments describing your code. Use the included logging framework to log debug messages on these lines instead</li>
-					<li>Document new methods or classed. Use the rest of the codebase for reference</li>
-					<li>Run &quot;grunt release&quot; once your ready</li>
-					<li>Fix all tslint issues</li>
-					<li>Have a look at the generated documentation and check, if it&#39;s valid</li>
-					<li>Commit the code referencing the previously created issue (&quot;closes #123&quot;). Be verbose about your changes.</li>
-					<li>Push the code and create a pull request</li>
-					<li>We&#39;ll review the pull request, maybe ask you for details and finally accept the pull request</li>
 				</ul>
 			</div>
 		</div>
@@ -145,6 +151,9 @@
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/nodes.html">nodes</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/options.html">options</a>
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/processors.html">processors</a>

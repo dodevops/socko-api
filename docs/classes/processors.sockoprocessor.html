@@ -74,7 +74,7 @@
 					<div class="lead">
 						<p>The main SOCKO! processor.</p>
 					</div>
-					<p>This will call all other processors and merge their results together to form one resulting tree.</p>
+					<p>This will call all other processors and _merge their results together to form one resulting tree.</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -105,12 +105,13 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="processors.sockoprocessor.html#_log" class="tsd-kind-icon">_log</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="processors.sockoprocessor.html#_options" class="tsd-kind-icon">_options</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-external">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="processors.sockoprocessor.html#merge" class="tsd-kind-icon">merge</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="processors.sockoprocessor.html#_merge" class="tsd-kind-icon">_merge</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="processors.sockoprocessor.html#process" class="tsd-kind-icon">process</a></li>
 							</ul>
 						</section>
@@ -129,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/137942e/lib/processors/SockoProcessor.ts#L22">lib/processors/SockoProcessor.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/processors/SockoProcessor.ts#L24">lib/processors/SockoProcessor.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="processors.sockoprocessor.html" class="tsd-signature-type">SockoProcessor</a></h4>
@@ -145,7 +146,17 @@
 					<div class="tsd-signature tsd-kind-icon">_log<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Logger</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/137942e/lib/processors/SockoProcessor.ts#L22">lib/processors/SockoProcessor.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/processors/SockoProcessor.ts#L23">lib/processors/SockoProcessor.ts:23</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a name="_options" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _options</h3>
+					<div class="tsd-signature tsd-kind-icon">_options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/options.processoroptionsinterface.html" class="tsd-signature-type">ProcessorOptionsInterface</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/processors/SockoProcessor.ts#L24">lib/processors/SockoProcessor.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -153,16 +164,16 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
-					<a name="merge" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> merge</h3>
+					<a name="_merge" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _merge</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">merge<span class="tsd-signature-symbol">(</span>origin<span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a>, merger<span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">_merge<span class="tsd-signature-symbol">(</span>origin<span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a>, merger<span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/137942e/lib/processors/SockoProcessor.ts#L68">lib/processors/SockoProcessor.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/processors/SockoProcessor.ts#L74">lib/processors/SockoProcessor.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -188,7 +199,7 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>the result of the merge operation</p>
+							<p>the result of the _merge operation</p>
 						</li>
 					</ul>
 				</section>
@@ -196,14 +207,14 @@
 					<a name="process" class="tsd-anchor"></a>
 					<h3>process</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">process<span class="tsd-signature-symbol">(</span>inputNode<span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a>, hierarchyNode<span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">process<span class="tsd-signature-symbol">(</span>inputNode<span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a>, hierarchyNode<span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/options.processoroptionsinterface.html" class="tsd-signature-type">ProcessorOptionsInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/processors.processorinterface.html">ProcessorInterface</a>.<a href="../interfaces/processors.processorinterface.html#process">process</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/137942e/lib/processors/SockoProcessor.ts#L28">lib/processors/SockoProcessor.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/processors/SockoProcessor.ts#L30">lib/processors/SockoProcessor.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -213,6 +224,9 @@
 								</li>
 								<li>
 									<h5>hierarchyNode: <a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a></h5>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/options.processoroptionsinterface.html" class="tsd-signature-type">ProcessorOptionsInterface</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/nodes.sockonodeinterface.html" class="tsd-signature-type">SockoNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -248,6 +262,9 @@
 					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="../modules/nodes.html">nodes</a>
 					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="../modules/options.html">options</a>
+					</li>
 					<li class="current tsd-kind-external-module tsd-is-external">
 						<a href="../modules/processors.html">processors</a>
 					</li>
@@ -278,8 +295,11 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
 								<a href="processors.sockoprocessor.html#_log" class="tsd-kind-icon">_log</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+								<a href="processors.sockoprocessor.html#_options" class="tsd-kind-icon">_options</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
-								<a href="processors.sockoprocessor.html#merge" class="tsd-kind-icon">merge</a>
+								<a href="processors.sockoprocessor.html#_merge" class="tsd-kind-icon">_merge</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
 								<a href="processors.sockoprocessor.html#process" class="tsd-kind-icon">process</a>
