@@ -35,46 +35,71 @@ export class BucketNodeProcessor extends AbstractProcessor<BucketNodeInterface> 
       .build()
 
     let levels = hierarchyNode.getLevel()
-
-    return hierarchyNode.walk(
-      Direction.rootUp,
-      (node: SockoNodeInterface) => {
-        if (node.name === inputNode.name) {
-          return Bluebird.reject(
-            new ProcessCalledFromBucketNodeError(node)
-          )
-        } else {
+    return inputNode.getPathNodes()
+      .then(
+        inputPathNodes => {
           this._getLog().debug(
-            `Checking for bucket equivalent in the hierarchy tree. Searching children of node ${node.name}`
+            'Removing root from input path to get a relative path for hierarchy checking'
           )
-          for (let childNode of node.getChildren() as Array<SockoNodeInterface>) {
-            if (childNode.name === inputNode.name) {
-              this._getLog().debug('Found bucket equivalent. Checking for matching children')
-              return this._getBucketEntries(inputNode, childNode, levels, true)
-                .then(
-                  value => {
-                    levels = levels - 1
-                    if (value) {
-                      this._getLog().debug('Merging with probably existing bucket entries')
-                      for (let processedNode of value.getChildren()) {
-                        for (let existingChild of returnedNode.getChildren()) {
-                          if (existingChild.name === processedNode.name) {
-                            returnedNode.removeChild(existingChild)
-                          }
-                        }
-                        returnedNode.addChild(processedNode as OutputNodeInterface)
-                      }
-                    }
-                    return Bluebird.resolve()
-                  }
-                )
-            }
+
+          let inputPathNames: Array<string> = []
+
+          for (let inputPathNode of inputPathNodes.slice(1)) {
+            inputPathNames.push(inputPathNode.name)
           }
-          levels = levels - 1
-          return Bluebird.resolve()
+          return hierarchyNode.walk(
+            Direction.rootUp,
+            (node: SockoNodeInterface) => {
+              if (node.name === inputNode.name) {
+                return Bluebird.reject(
+                  new ProcessCalledFromBucketNodeError(node)
+                )
+              } else {
+                this._getLog().debug(
+                  `Checking for bucket equivalent in the hierarchy tree in path ${inputPathNames}`
+                )
+                return node.getNodeByPathArray(inputPathNames, false)
+                  .catch(
+                    (error: Error) => {
+                      return error.name === 'NodeNotFoundError'
+                    },
+                    () => {
+                      return Bluebird.resolve(null)
+                    }
+                  )
+                  .then(
+                    subNode => {
+                      if (subNode === null) {
+                        return Bluebird.resolve(null)
+                      }
+
+                      this._getLog().debug('Found bucket equivalent. Checking for matching children')
+                      return this._getBucketEntries(inputNode, subNode, levels, true)
+                    }
+                  )
+                  .then(
+                    value => {
+                      levels = levels - 1
+                      if (value) {
+                        this._getLog().debug('Merging with probably existing bucket entries')
+                        for (let processedNode of value.getChildren()) {
+                          for (let existingChild of returnedNode.getChildren()) {
+                            if (existingChild.name === processedNode.name) {
+                              returnedNode.removeChild(existingChild)
+                            }
+                          }
+                          returnedNode.addChild(processedNode as OutputNodeInterface)
+                        }
+                      }
+                      return Bluebird.resolve()
+                    }
+                  )
+
+              }
+            }
+          )
         }
-      }
-    )
+      )
       .then(
         () => {
           return returnedNode
@@ -111,7 +136,10 @@ export class BucketNodeProcessor extends AbstractProcessor<BucketNodeInterface> 
         (inputNode.pattern as RegExp).test(node.name)
       ) {
         eligible = true
-      } else if (minimatch(node.name, inputNode.pattern as string)) {
+      } else if (
+        typeof inputNode.pattern === 'string' &&
+        minimatch(node.name, inputNode.pattern as string)
+      ) {
         eligible = true
       }
 

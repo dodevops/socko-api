@@ -56,6 +56,17 @@ function getTestInput (): SockoNodeInterface {
         .withPattern(/bucketItem.*/)
         .build()
     )
+    .withChild(
+      new BranchNodeBuilder()
+        .withName('subNode')
+        .withChild(
+          new BucketNodeBuilder()
+            .withName('subNodeBucket')
+            .withPattern('bucketItem*')
+            .build()
+        )
+        .build()
+    )
     .build()
 }
 
@@ -232,6 +243,17 @@ function getTestHierarchy (): SockoNodeInterface {
             )
             .build()
         )
+        .withChild(
+          new BranchNodeBuilder()
+            .withName('subNodeBucket')
+            .withChild(
+              new SimpleNodeBuilder()
+                .withName('bucketItem1')
+                .withReadContent((): Bluebird<any> => { return Bluebird.resolve('subNodeBucketContent1') })
+                .build()
+            )
+            .build()
+        )
         .build()
     )
     .build()
@@ -263,7 +285,8 @@ describe(
                 infiniteDepthBucket: value.getNodeByPath('/_root/infiniteDepthBucket'),
                 maxDepth0Bucket: value.getNodeByPath('/_root/maxDepth0Bucket'),
                 maxDepth1Bucket: value.getNodeByPath('/_root/maxDepth1Bucket'),
-                regexpPatternBucket: value.getNodeByPath('/_root/regexpPatternBucket')
+                regexpPatternBucket: value.getNodeByPath('/_root/regexpPatternBucket'),
+                subNodeBucket: value.getNodeByPath('/_root/subNode/subNodeBucket')
               }
             )
           }
@@ -318,6 +341,15 @@ describe(
               value.regexpPatternBucket.getChildByName('bucketItem2')
             ).to.not.equal(null)
 
+            // test subnode
+
+            chai.expect(
+              value.subNodeBucket.getChildren().length
+            ).to.equal(1)
+            chai.expect(
+              value.subNodeBucket.getChildByName('bucketItem1')
+            ).to.not.equal(null)
+
             // test contents
 
             return Bluebird.props(
@@ -335,7 +367,9 @@ describe(
                 maxDepth1BucketBucketItem3:
                   (value.maxDepth1Bucket.getChildByName('bucketItem3') as OutputNodeInterface).readContent(),
                 maxDepth1BucketBucketItem4:
-                  (value.maxDepth1Bucket.getChildByName('bucketItem4') as OutputNodeInterface).readContent()
+                  (value.maxDepth1Bucket.getChildByName('bucketItem4') as OutputNodeInterface).readContent(),
+                subNodeBucketBucketItem1:
+                  (value.subNodeBucket.getChildByName('bucketItem1') as OutputNodeInterface).readContent()
               }
             )
               .then(
@@ -364,6 +398,9 @@ describe(
                     contents.maxDepth1BucketBucketItem4
                   ).to.equal('bucketSubSubContent4')
 
+                  chai.expect(
+                    contents.subNodeBucketBucketItem1
+                  ).to.equal('subNodeBucketContent1')
                 }
               )
           }
