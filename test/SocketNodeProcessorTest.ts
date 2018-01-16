@@ -171,12 +171,6 @@ function getTestHierarchy (): SockoNodeInterface {
         )
         .build()
     )
-    .withChild(
-      new CartridgeNodeBuilder()
-        .withName('testSubNodeCartridge')
-        .withReadContent((): Bluebird<any> => { return Bluebird.resolve('cartridgeRootContent') })
-        .build()
-    )
     .build()
 
 }
@@ -185,7 +179,7 @@ describe(
   'SocketNodeProcessor', function (): void {
     let subject = new SocketNodeProcessor()
     it('should work', function (): Bluebird<void> {
-      return getTestHierarchy().getNodeByPath('_root/subNode/subSubNode')
+      return getTestHierarchy().getNodeByPath('/_root/subNode/subSubNode')
         .then(
           testHierarchy => {
             return subject.process(
@@ -199,12 +193,12 @@ describe(
           value => {
             return Bluebird.props(
               {
-                socketTest: value.getNodeByPath('_root/socketTest'),
-                socketTestCollectorInfinite: value.getNodeByPath('_root/socketTestCollectorInfinite'),
-                socketTestCollectorMaxDepth0: value.getNodeByPath('_root/socketTestCollectorMaxDepth0'),
-                socketTestCollectorMaxDepth1: value.getNodeByPath('_root/socketTestCollectorMaxDepth1'),
-                socketTestCollectorRegexp: value.getNodeByPath('_root/socketTestCollectorRegexp'),
-                subNodeSocket: value.getNodeByPath('_root/subNode/subNodeSocket')
+                socketTest: value.getNodeByPath('/_root/socketTest'),
+                socketTestCollectorInfinite: value.getNodeByPath('/_root/socketTestCollectorInfinite'),
+                socketTestCollectorMaxDepth0: value.getNodeByPath('/_root/socketTestCollectorMaxDepth0'),
+                socketTestCollectorMaxDepth1: value.getNodeByPath('/_root/socketTestCollectorMaxDepth1'),
+                socketTestCollectorRegexp: value.getNodeByPath('/_root/socketTestCollectorRegexp'),
+                subNodeSocket: value.getNodeByPath('/_root/subNode/subNodeSocket')
               }
             )
           }
@@ -232,7 +226,7 @@ describe(
             chai.expect(
               value.socketTestCollectorInfinite
             ).to.equal(
-              '>>>cartridgeContent1cartridgeContent2cartridgeSubNodeContent1cartridgeContent3cartridgeContent4<<<'
+              '>>>cartridgeSubNodeContent1cartridgeContent2cartridgeContent3cartridgeContent4<<<'
             )
 
             chai.expect(
@@ -250,7 +244,7 @@ describe(
             chai.expect(
               value.socketTestCollectorRegexp
             ).to.equal(
-              '>>>cartridgeContent1cartridgeContent2cartridgeSubNodeContent1cartridgeContent3cartridgeContent4<<<'
+              '>>>cartridgeSubNodeContent1cartridgeContent2cartridgeContent3cartridgeContent4<<<'
             )
 
             chai.expect(
@@ -261,7 +255,7 @@ describe(
         )
     })
     it('should filter out cartridges', function (): Bluebird<void> {
-      return getTestHierarchy().getNodeByPath('_root/subNode/subSubNode')
+      return getTestHierarchy().getNodeByPath('/_root/subNode/subSubNode')
         .then(
           testHierarchy => {
             let options = new ProcessorOptionsFactory().create()
@@ -280,7 +274,7 @@ describe(
         )
         .then(
           value => {
-            return value.getNodeByPath('_root/socketTestCollectorInfinite')
+            return value.getNodeByPath('/_root/socketTestCollectorInfinite')
           }
         )
         .then(
@@ -293,13 +287,13 @@ describe(
             chai.expect(
               content
             ).to.equal(
-              '>>>cartridgeContent1cartridgeContent2cartridgeSubNodeContent1cartridgeContent3<<<'
+              '>>>cartridgeSubNodeContent1cartridgeContent2cartridgeContent3<<<'
             )
           }
         )
     })
     it('should change cartridges on the fly', function (): Bluebird<void> {
-      return getTestHierarchy().getNodeByPath('_root/subNode/subSubNode')
+      return getTestHierarchy().getNodeByPath('/_root/subNode/subSubNode')
         .then(
           testHierarchy => {
             let options = new ProcessorOptionsFactory().create()
@@ -320,7 +314,7 @@ describe(
         )
         .then(
           value => {
-            return value.getNodeByPath('_root/socketTestCollectorInfinite')
+            return value.getNodeByPath('/_root/socketTestCollectorInfinite')
           }
         )
         .then(
@@ -333,8 +327,35 @@ describe(
             chai.expect(
               content
             ).to.equal(
-              '>>>cartridgeContent1cartridgeContent2cartridgeSubNodeContent1cartridgeContent3exchangedContent<<<'
+              '>>>cartridgeSubNodeContent1cartridgeContent2cartridgeContent3exchangedContent<<<'
             )
+          }
+        )
+    })
+    it('should search for cartridges in matching sub-folders', function (): Bluebird<void> {
+      return getTestHierarchy().getNodeByPath('/_root')
+        .then(
+          testHierarchy => {
+            return subject.process(
+              getTestInput(),
+              testHierarchy as SockoNodeInterface,
+              new ProcessorOptionsFactory().create()
+            )
+          }
+        )
+        .then(
+          value => {
+            return value.getNodeByPath('/_root/subNode/subNodeSocket')
+          }
+        )
+        .then(
+          value => {
+            return (value as OutputNodeInterface).readContent()
+          }
+        )
+        .then(
+          value => {
+            chai.expect(value).to.equal('>>>cartridgeSubNodeContent<<<')
           }
         )
     })

@@ -130,8 +130,10 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#getdata" class="tsd-kind-icon">get<wbr>Data</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#getlevel" class="tsd-kind-icon">get<wbr>Level</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#getnodebypath" class="tsd-kind-icon">get<wbr>Node<wbr>ByPath</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#getnodebypatharray" class="tsd-kind-icon">get<wbr>Node<wbr>ByPath<wbr>Array</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#getparent" class="tsd-kind-icon">get<wbr>Parent</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#getpath" class="tsd-kind-icon">get<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#getpathnodes" class="tsd-kind-icon">get<wbr>Path<wbr>Nodes</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#getroot" class="tsd-kind-icon">get<wbr>Root</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#isroot" class="tsd-kind-icon">is<wbr>Root</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external"><a href="nodes.cartridgenode.html#readcontent" class="tsd-kind-icon">read<wbr>Content</a></li>
@@ -159,7 +161,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/nodes/CartridgeNode.ts#L8">lib/nodes/CartridgeNode.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/2628629/lib/nodes/CartridgeNode.ts#L8">lib/nodes/CartridgeNode.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="nodes.cartridgenode.html" class="tsd-signature-type">CartridgeNode</a></h4>
@@ -207,7 +209,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#type">type</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/nodes/AbstractSockoNode.ts#L18">lib/nodes/AbstractSockoNode.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/2628629/lib/nodes/AbstractSockoNode.ts#L18">lib/nodes/AbstractSockoNode.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/nodes.sockonodetype.html" class="tsd-signature-type">SockoNodeType</a></h4>
@@ -216,7 +218,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#type">type</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/nodes/AbstractSockoNode.ts#L22">lib/nodes/AbstractSockoNode.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/2628629/lib/nodes/AbstractSockoNode.ts#L22">lib/nodes/AbstractSockoNode.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -366,7 +368,7 @@
 								<p>Implementation of <a href="../interfaces/nodes.cartridgenodeinterface.html">CartridgeNodeInterface</a>.<a href="../interfaces/nodes.cartridgenodeinterface.html#getlevel">getLevel</a></p>
 								<p>Inherited from AbstractNode.getLevel</p>
 								<ul>
-									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:33</li>
+									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:34</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -385,7 +387,7 @@
 								<p>Implementation of <a href="../interfaces/nodes.cartridgenodeinterface.html">CartridgeNodeInterface</a>.<a href="../interfaces/nodes.cartridgenodeinterface.html#getnodebypath">getNodeByPath</a></p>
 								<p>Inherited from AbstractNode.getNodeByPath</p>
 								<ul>
-									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:31</li>
+									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:32</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -395,6 +397,34 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> pathSeparator: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+					<a name="getnodebypatharray" class="tsd-anchor"></a>
+					<h3>get<wbr>Node<wbr>ByPath<wbr>Array</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Node<wbr>ByPath<wbr>Array<span class="tsd-signature-symbol">(</span>pathNodes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, absolute<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/nodes.cartridgenodeinterface.html">CartridgeNodeInterface</a>.<a href="../interfaces/nodes.cartridgenodeinterface.html#getnodebypatharray">getNodeByPathArray</a></p>
+								<p>Inherited from AbstractNode.getNodeByPathArray</p>
+								<ul>
+									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:35</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pathNodes: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>absolute: <span class="tsd-signature-type">boolean</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -432,7 +462,7 @@
 								<p>Implementation of <a href="../interfaces/nodes.cartridgenodeinterface.html">CartridgeNodeInterface</a>.<a href="../interfaces/nodes.cartridgenodeinterface.html#getpath">getPath</a></p>
 								<p>Inherited from AbstractNode.getPath</p>
 								<ul>
-									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:30</li>
+									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:31</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -442,6 +472,25 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+					<a name="getpathnodes" class="tsd-anchor"></a>
+					<h3>get<wbr>Path<wbr>Nodes</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Path<wbr>Nodes<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/nodes.cartridgenodeinterface.html">CartridgeNodeInterface</a>.<a href="../interfaces/nodes.cartridgenodeinterface.html#getpathnodes">getPathNodes</a></p>
+								<p>Inherited from AbstractNode.getPathNodes</p>
+								<ul>
+									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:30</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -457,7 +506,7 @@
 								<p>Implementation of <a href="../interfaces/nodes.cartridgenodeinterface.html">CartridgeNodeInterface</a>.<a href="../interfaces/nodes.cartridgenodeinterface.html#getroot">getRoot</a></p>
 								<p>Inherited from AbstractNode.getRoot</p>
 								<ul>
-									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:32</li>
+									<li>Defined in node_modules/js-hierarchy/lib/AbstractNode.d.ts:33</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Node</span></h4>
@@ -495,7 +544,7 @@
 								<p>Implementation of <a href="../interfaces/nodes.cartridgenodeinterface.html">CartridgeNodeInterface</a>.<a href="../interfaces/nodes.cartridgenodeinterface.html#readcontent">readContent</a></p>
 								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#readcontent">readContent</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/nodes/AbstractSockoNode.ts#L26">lib/nodes/AbstractSockoNode.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/2628629/lib/nodes/AbstractSockoNode.ts#L26">lib/nodes/AbstractSockoNode.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -639,7 +688,7 @@
 								<p>Implementation of <a href="../interfaces/nodes.cartridgenodeinterface.html">CartridgeNodeInterface</a>.<a href="../interfaces/nodes.cartridgenodeinterface.html#writecontent">writeContent</a></p>
 								<p>Inherited from <a href="nodes.abstractsockonode.html">AbstractSockoNode</a>.<a href="nodes.abstractsockonode.html#writecontent">writeContent</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/nodes/AbstractSockoNode.ts#L30">lib/nodes/AbstractSockoNode.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/2628629/lib/nodes/AbstractSockoNode.ts#L30">lib/nodes/AbstractSockoNode.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -742,10 +791,16 @@
 								<a href="nodes.cartridgenode.html#getnodebypath" class="tsd-kind-icon">get<wbr>Node<wbr>ByPath</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+								<a href="nodes.cartridgenode.html#getnodebypatharray" class="tsd-kind-icon">get<wbr>Node<wbr>ByPath<wbr>Array</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 								<a href="nodes.cartridgenode.html#getparent" class="tsd-kind-icon">get<wbr>Parent</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 								<a href="nodes.cartridgenode.html#getpath" class="tsd-kind-icon">get<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
+								<a href="nodes.cartridgenode.html#getpathnodes" class="tsd-kind-icon">get<wbr>Path<wbr>Nodes</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-external">
 								<a href="nodes.cartridgenode.html#getroot" class="tsd-kind-icon">get<wbr>Root</a>

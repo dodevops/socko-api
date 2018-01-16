@@ -118,9 +118,9 @@ describe(
             ).to.equal(SockoNodeType.Root)
             return Bluebird.props(
               {
-                override1: value.getNodeByPath('_root/testOverride1'),
-                override2: value.getNodeByPath('_root/testOverride2'),
-                subnodes: value.getNodeByPath('_root/testOverrideSubNode')
+                override1: value.getNodeByPath('/_root/testOverride1'),
+                override2: value.getNodeByPath('/_root/testOverride2'),
+                subnodes: value.getNodeByPath('/_root/testOverrideSubNode')
               }
             )
           }
@@ -158,7 +158,7 @@ describe(
     })
     it('should work on a subnode',
       function (): Bluebird<void> {
-        return getTestHierarchy().getNodeByPath('_root/subNode')
+        return getTestHierarchy().getNodeByPath('/_root/subNode')
           .then(
             testHierarchy => {
               return subject.process(
@@ -175,9 +175,9 @@ describe(
               ).to.equal(SockoNodeType.Root)
               return Bluebird.props(
                 {
-                  override1: value.getNodeByPath('_root/testOverride1'),
-                  override2: value.getNodeByPath('_root/testOverride2'),
-                  subnodes: value.getNodeByPath('_root/testOverrideSubNode')
+                  override1: value.getNodeByPath('/_root/testOverride1'),
+                  override2: value.getNodeByPath('/_root/testOverride2'),
+                  subnodes: value.getNodeByPath('/_root/testOverrideSubNode')
                 }
               )
             }

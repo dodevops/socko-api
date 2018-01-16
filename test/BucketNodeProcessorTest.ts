@@ -242,7 +242,7 @@ describe(
   'BucketNodeProcessor', function (): void {
     let subject = new BucketNodeProcessor()
     it('should collect bucket entries into a bucket', function (): Bluebird<void> {
-      return getTestHierarchy().getNodeByPath('_root/subNode/subSubNode')
+      return getTestHierarchy().getNodeByPath('/_root/subNode/subSubNode')
         .then(
           testHierarchy => {
             return subject.process(
@@ -260,10 +260,10 @@ describe(
 
             return Bluebird.props(
               {
-                infiniteDepthBucket: value.getNodeByPath('_root/infiniteDepthBucket'),
-                maxDepth0Bucket: value.getNodeByPath('_root/maxDepth0Bucket'),
-                maxDepth1Bucket: value.getNodeByPath('_root/maxDepth1Bucket'),
-                regexpPatternBucket: value.getNodeByPath('_root/regexpPatternBucket')
+                infiniteDepthBucket: value.getNodeByPath('/_root/infiniteDepthBucket'),
+                maxDepth0Bucket: value.getNodeByPath('/_root/maxDepth0Bucket'),
+                maxDepth1Bucket: value.getNodeByPath('/_root/maxDepth1Bucket'),
+                regexpPatternBucket: value.getNodeByPath('/_root/regexpPatternBucket')
               }
             )
           }
@@ -370,7 +370,7 @@ describe(
         )
     })
     it('should fail when called directly from a hierachy node', function (): Bluebird<void> {
-      return getTestHierarchy().getNodeByPath('_root/infiniteDepthBucket')
+      return getTestHierarchy().getNodeByPath('/_root/infiniteDepthBucket')
         .then(
           testHierarchy => {
             return chai.expect(

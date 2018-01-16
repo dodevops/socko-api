@@ -1,6 +1,6 @@
 {
   "name": "socko-api",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Hierarchical Tree Weaver",
   "keywords": [
     "template",
@@ -25,7 +25,7 @@
   "dependencies": {
     "bluebird": "^3.5.1",
     "loglevel": "^1.6.0",
-    "js-hierarchy": "^2.3.0",
+    "js-hierarchy": "^4.0.0",
     "minimatch": "^3.0.4"
   },
   "devDependencies": {

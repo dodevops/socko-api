@@ -118,11 +118,11 @@ describe(
 
             return Bluebird.props(
               {
-                overrideTest: value.getNodeByPath('_root/testOverride'),
-                socketTest: value.getNodeByPath('_root/testSocket'),
-                bucketTest: value.getNodeByPath('_root/testBucket'),
-                staticTest: value.getNodeByPath('_root/testStatic'),
-                branchTest: value.getNodeByPath('_root/testBranch')
+                overrideTest: value.getNodeByPath('/_root/testOverride'),
+                socketTest: value.getNodeByPath('/_root/testSocket'),
+                bucketTest: value.getNodeByPath('/_root/testBucket'),
+                staticTest: value.getNodeByPath('/_root/testStatic'),
+                branchTest: value.getNodeByPath('/_root/testBranch')
               }
             )
           }
@@ -198,7 +198,7 @@ describe(
             ).to.equal(SockoNodeType.Root)
 
             return chai.expect(
-              value.getNodeByPath('_root/testStatic')
+              value.getNodeByPath('/_root/testStatic')
             ).to.be.rejectedWith('Node with name testStatic not found')
           }
         )

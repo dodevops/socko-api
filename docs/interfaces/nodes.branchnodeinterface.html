@@ -116,8 +116,10 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#getdata" class="tsd-kind-icon">get<wbr>Data</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#getlevel" class="tsd-kind-icon">get<wbr>Level</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#getnodebypath" class="tsd-kind-icon">get<wbr>Node<wbr>ByPath</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#getnodebypatharray" class="tsd-kind-icon">get<wbr>Node<wbr>ByPath<wbr>Array</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#getparent" class="tsd-kind-icon">get<wbr>Parent</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#getpath" class="tsd-kind-icon">get<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#getpathnodes" class="tsd-kind-icon">get<wbr>Path<wbr>Nodes</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#getroot" class="tsd-kind-icon">get<wbr>Root</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#isroot" class="tsd-kind-icon">is<wbr>Root</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="nodes.branchnodeinterface.html#readcontent" class="tsd-kind-icon">read<wbr>Content</a></li>
@@ -152,7 +154,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="nodes.sockonodeinterface.html">SockoNodeInterface</a>.<a href="nodes.sockonodeinterface.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/nodes/SockoNodeInterface.ts#L12">lib/nodes/SockoNodeInterface.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/2628629/lib/nodes/SockoNodeInterface.ts#L12">lib/nodes/SockoNodeInterface.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -292,7 +294,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Node.getLevel</p>
 								<ul>
-									<li>Defined in node_modules/js-hierarchy/lib/Node.d.ts:22</li>
+									<li>Defined in node_modules/js-hierarchy/lib/Node.d.ts:24</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -310,7 +312,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Node.getNodeByPath</p>
 								<ul>
-									<li>Defined in node_modules/js-hierarchy/lib/Node.d.ts:20</li>
+									<li>Defined in node_modules/js-hierarchy/lib/Node.d.ts:21</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -320,6 +322,33 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> pathSeparator: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+					<a name="getnodebypatharray" class="tsd-anchor"></a>
+					<h3>get<wbr>Node<wbr>ByPath<wbr>Array</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Node<wbr>ByPath<wbr>Array<span class="tsd-signature-symbol">(</span>pathNodes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, absolute<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from Node.getNodeByPathArray</p>
+								<ul>
+									<li>Defined in node_modules/js-hierarchy/lib/Node.d.ts:22</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>pathNodes: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>absolute: <span class="tsd-signature-type">boolean</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -369,6 +398,24 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+					<a name="getpathnodes" class="tsd-anchor"></a>
+					<h3>get<wbr>Path<wbr>Nodes</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Path<wbr>Nodes<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from Node.getPathNodes</p>
+								<ul>
+									<li>Defined in node_modules/js-hierarchy/lib/Node.d.ts:20</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Bluebird</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Node</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 					<a name="getroot" class="tsd-anchor"></a>
 					<h3>get<wbr>Root</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
@@ -379,7 +426,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Node.getRoot</p>
 								<ul>
-									<li>Defined in node_modules/js-hierarchy/lib/Node.d.ts:21</li>
+									<li>Defined in node_modules/js-hierarchy/lib/Node.d.ts:23</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Node</span></h4>
@@ -415,7 +462,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="nodes.sockonodeinterface.html">SockoNodeInterface</a>.<a href="nodes.sockonodeinterface.html#readcontent">readContent</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/nodes/SockoNodeInterface.ts#L18">lib/nodes/SockoNodeInterface.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/2628629/lib/nodes/SockoNodeInterface.ts#L18">lib/nodes/SockoNodeInterface.ts:18</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -558,7 +605,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="nodes.sockonodeinterface.html">SockoNodeInterface</a>.<a href="nodes.sockonodeinterface.html#writecontent">writeContent</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/c895edf/lib/nodes/SockoNodeInterface.ts#L25">lib/nodes/SockoNodeInterface.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/2628629/lib/nodes/SockoNodeInterface.ts#L25">lib/nodes/SockoNodeInterface.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -681,10 +728,16 @@
 								<a href="nodes.branchnodeinterface.html#getnodebypath" class="tsd-kind-icon">get<wbr>Node<wbr>ByPath</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+								<a href="nodes.branchnodeinterface.html#getnodebypatharray" class="tsd-kind-icon">get<wbr>Node<wbr>ByPath<wbr>Array</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 								<a href="nodes.branchnodeinterface.html#getparent" class="tsd-kind-icon">get<wbr>Parent</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 								<a href="nodes.branchnodeinterface.html#getpath" class="tsd-kind-icon">get<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
+								<a href="nodes.branchnodeinterface.html#getpathnodes" class="tsd-kind-icon">get<wbr>Path<wbr>Nodes</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 								<a href="nodes.branchnodeinterface.html#getroot" class="tsd-kind-icon">get<wbr>Root</a>
