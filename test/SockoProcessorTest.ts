@@ -72,6 +72,11 @@ function getInputNode (): SockoNodeInterface {
             .withReadContent((): Bluebird<any> => { return Bluebird.resolve('staticContentInBranch') })
             .build()
         )
+        .withChild(
+          new BucketNodeBuilder()
+            .withName('testBucketInBranch')
+            .build()
+        )
         .build()
     )
     .build()
@@ -102,6 +107,21 @@ function getHierarchyNode (): SockoNodeInterface {
         )
         .build()
     )
+    .withChild(
+      new BranchNodeBuilder()
+        .withName('testBranch')
+        .withChild(
+          new BranchNodeBuilder()
+            .withName('testBucketInBranch')
+            .withChild(
+              new SimpleNodeBuilder()
+                .withName('bucketInBranchEntry1')
+                .withReadContent((): Bluebird<any> => { return Bluebird.resolve('testBucketInBranchContent') })
+                .build()
+            ).build()
+        )
+        .build()
+    )
     .build()
 }
 
@@ -122,7 +142,8 @@ describe(
                 socketTest: value.getNodeByPath('/_root/testSocket'),
                 bucketTest: value.getNodeByPath('/_root/testBucket'),
                 staticTest: value.getNodeByPath('/_root/testStatic'),
-                branchTest: value.getNodeByPath('/_root/testBranch')
+                branchTest: value.getNodeByPath('/_root/testBranch'),
+                bucketInBranchTest: value.getNodeByPath('/_root/testBranch/testBucketInBranch')
               }
             )
           }
@@ -140,11 +161,19 @@ describe(
 
             chai.expect(
               value.branchTest.getChildren().length
-            ).to.equal(1)
+            ).to.equal(2)
 
             chai.expect(
               (value.branchTest.getChildren()[0] as OutputNodeInterface).name
             ).to.equal('testStaticNodeInBranch')
+
+            chai.expect(
+              value.bucketInBranchTest.getChildren().length
+            ).to.equal(1)
+
+            chai.expect(
+              (value.bucketInBranchTest.getChildren()[0] as OutputNodeInterface).name
+            ).to.equal('bucketInBranchEntry1')
 
             return Bluebird.props(
               {
@@ -152,7 +181,8 @@ describe(
                 socketTest: (value.socketTest as OutputNodeInterface).readContent(),
                 bucketTest: (value.bucketTest.getChildren()[0] as OutputNodeInterface).readContent(),
                 staticTest: (value.staticTest as OutputNodeInterface).readContent(),
-                branchTest: (value.branchTest.getChildren()[0] as OutputNodeInterface).readContent()
+                branchTest: (value.branchTest.getChildren()[0] as OutputNodeInterface).readContent(),
+                bucketInBranchTest: (value.bucketInBranchTest.getChildren()[0] as OutputNodeInterface).readContent()
               }
             )
           }
@@ -178,6 +208,10 @@ describe(
             chai.expect(
               value.branchTest
             ).to.equal('staticContentInBranch')
+
+            chai.expect(
+              value.bucketInBranchTest
+            ).to.equal('testBucketInBranchContent')
           }
         )
     })

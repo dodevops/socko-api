@@ -4,10 +4,8 @@ import { OverrideNodeProcessor } from './OverrideNodeProcessor'
 import { BucketNodeProcessor } from './BucketNodeProcessor'
 import { SocketNodeProcessor } from './SocketNodeProcessor'
 import { RootNodeBuilder } from '../builders/RootNodeBuilder'
-import { OutputNodeInterface } from '../nodes/OutputNodeInterface'
 import { InvalidMergeNode } from '../errors/InvalidMergeNode'
 import { SockoNodeType } from '../nodes/SockoNodeType'
-import { OutputNodeBuilder } from '../builders/OutputNodeBuilder'
 import { BranchNodeBuilder } from '../builders/BranchNodeBuilder'
 import { getLogger, Logger } from 'loglevel'
 import { ProcessorOptionsInterface } from '../options/ProcessorOptionsInterface'
@@ -116,7 +114,8 @@ export class SockoProcessor implements ProcessorInterface {
 
     for (let mergerNode of merger.getChildren() as Array<SockoNodeInterface>) {
       if (mergerNode.type !== SockoNodeType.Skipped) {
-        if (!origin.getChildByName(mergerNode.name)) {
+        let originChild = origin.getChildByName(mergerNode.name) as SockoNodeInterface
+        if (!originChild || originChild.type === SockoNodeType.Skipped) {
           this._log.debug(`Adding node ${mergerNode.name}`)
           tasks.push(Bluebird.resolve(mergerNode))
         }

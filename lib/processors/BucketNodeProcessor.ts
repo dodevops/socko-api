@@ -124,11 +124,12 @@ export class BucketNodeProcessor extends AbstractProcessor<BucketNodeInterface> 
       return Bluebird.resolve(null)
     }
 
+    let eligible: boolean
+
     if (skipNode) {
+      eligible = true
       this._getLog().debug('Not testing this node. It might just be the bucket equivalent')
     } else {
-      let eligible: boolean = false
-
       this._getLog().debug(`Checking, if ${node.name} matches ${inputNode.pattern}`)
 
       if (
@@ -142,12 +143,6 @@ export class BucketNodeProcessor extends AbstractProcessor<BucketNodeInterface> 
       ) {
         eligible = true
       }
-
-      if (!eligible) {
-        this._getLog().debug('No. Skipping.')
-        return Bluebird.resolve(null)
-      }
-
     }
 
     this._getLog().debug('Node matches. Transform this node into an output node.')
@@ -176,6 +171,10 @@ export class BucketNodeProcessor extends AbstractProcessor<BucketNodeInterface> 
       )
         .then(
           outputChildNodes => {
+            if (!eligible && outputChildNodes.length === 0) {
+              return Bluebird.resolve(null)
+            }
+            eligible = true
             for (let outputChild of outputChildNodes) {
               returnNode.addChild(outputChild)
             }
@@ -184,6 +183,9 @@ export class BucketNodeProcessor extends AbstractProcessor<BucketNodeInterface> 
           }
         )
     } else {
+      if (!eligible) {
+        return Bluebird.resolve(null)
+      }
       this._getLog().debug('Returning processed node')
 
       return Bluebird.resolve(new OutputNodeBuilder()
