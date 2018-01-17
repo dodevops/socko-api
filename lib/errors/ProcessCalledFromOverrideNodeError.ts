@@ -8,5 +8,6 @@ export class ProcessCalledFromOverrideNodeError extends AbstractError {
 
   constructor (node: SockoNodeInterface) {
     super(`Process was called from an override eligible node: ${node.name}`)
+    this.name = 'ProcessCalledFromOverrideNodeError'
   }
 }

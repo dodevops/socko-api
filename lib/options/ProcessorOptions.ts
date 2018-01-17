@@ -12,6 +12,7 @@ export class ProcessorOptions implements ProcessorOptionsInterface {
   private _processResultTreeNode: (node: SockoNodeInterface) => Bluebird<SockoNodeInterface>
   private _processCartridgeNode: (node: CartridgeNodeInterface)
     => Bluebird<CartridgeNodeInterface | SkippedNodeInterface>
+  private _allowEmptyCartridgeSlots: boolean
 
   get processResultTreeNode (): (node: SockoNodeInterface) => Bluebird<SockoNodeInterface> {
     return this._processResultTreeNode
@@ -27,5 +28,13 @@ export class ProcessorOptions implements ProcessorOptionsInterface {
 
   set processCartridgeNode (value: (node: CartridgeNodeInterface) => Bluebird<(CartridgeNodeInterface | SkippedNodeInterface)>) {
     this._processCartridgeNode = value
+  }
+
+  get allowEmptyCartridgeSlots (): boolean {
+    return this._allowEmptyCartridgeSlots
+  }
+
+  set allowEmptyCartridgeSlots (value: boolean) {
+    this._allowEmptyCartridgeSlots = value
   }
 }

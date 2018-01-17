@@ -14,6 +14,7 @@ export class ProcessorOptionsFactory {
     processorOptions.processResultTreeNode = node => {
       return Bluebird.resolve(node)
     }
+    processorOptions.allowEmptyCartridgeSlots = false
     return processorOptions
   }
 }

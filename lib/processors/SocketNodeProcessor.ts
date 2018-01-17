@@ -7,6 +7,7 @@ import { CartridgeSlotInterface } from '../nodes/CartridgeSlotInterface'
 import { CartridgeNodeInterface } from '../nodes/CartridgeNodeInterface'
 import { SocketNodeInterface } from '../nodes/SocketNodeInterface'
 import { ProcessorOptionsInterface } from '../options/ProcessorOptionsInterface'
+import { NoCartridgeFoundError } from '../errors/NoCartridgeFoundError'
 import Bluebird = require('bluebird')
 import minimatch = require('minimatch')
 
@@ -282,7 +283,12 @@ export class SocketNodeProcessor extends AbstractProcessor<SocketNodeInterface> 
           )
       }
     } else {
-      return Bluebird.resolve(cartridgeSlot)
+      if (this._options.allowEmptyCartridgeSlots) {
+        cartridgeSlot.cartridgeContent = ''
+        return Bluebird.resolve(cartridgeSlot)
+      } else {
+        return Bluebird.reject(new NoCartridgeFoundError(cartridgeSlot))
+      }
     }
   }
 }

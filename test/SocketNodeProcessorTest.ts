@@ -359,5 +359,89 @@ describe(
           }
         )
     })
+    it('should fail on missing cartridges', function (): Bluebird<void> {
+      let hierarchy = getTestHierarchy()
+      hierarchy.removeChild(0)
+      return hierarchy.getNodeByPath('/_root')
+        .then(
+          testHierarchy => {
+            return chai.expect(subject.process(
+              getTestInput(),
+              testHierarchy as SockoNodeInterface,
+              new ProcessorOptionsFactory().create()
+            )).to.be.rejectedWith(/No cartridges found for slot.*testCartridge1/)
+          }
+        )
+    })
+    it('should fail on missing cartridges for a collector', function (): Bluebird<void> {
+      let hierarchy = getTestHierarchy()
+      hierarchy.getChildByName('subNode').getChildByName('subSubNode').removeChild(0)
+      return hierarchy.getNodeByPath('/_root/subNode/subSubNode')
+        .then(
+          testHierarchy => {
+            return chai.expect(subject.process(
+              getTestInput(),
+              testHierarchy as SockoNodeInterface,
+              new ProcessorOptionsFactory().create()
+            )).to.be.rejectedWith(/No cartridges found for slot.*testCartridge\*/)
+          }
+        )
+    })
+    it('should not fail on missing cartridges when told so', function (): Bluebird<void> {
+      let hierarchy = getTestHierarchy()
+      hierarchy.removeChild(0)
+      return hierarchy.getNodeByPath('/_root')
+        .then(
+          testHierarchy => {
+            let options = new ProcessorOptionsFactory().create()
+            options.allowEmptyCartridgeSlots = true
+            return subject.process(
+              getTestInput(),
+              testHierarchy as SockoNodeInterface,
+              options
+            )
+          }
+        )
+        .then(
+          value => {
+            return (value.getChildByName('socketTest') as SockoNodeInterface).readContent()
+          }
+        )
+        .then(
+          value => {
+            chai.expect(
+              value
+            ).to.equal('>>><<<')
+          }
+        )
+    })
+    it('should fail not on missing cartridges for a collector when told so', function (): Bluebird<void> {
+      let hierarchy = getTestHierarchy()
+      hierarchy.getChildByName('subNode').getChildByName('subSubNode').removeChild(0)
+      return hierarchy.getNodeByPath('/_root/subNode/subSubNode')
+        .then(
+          testHierarchy => {
+            let options = new ProcessorOptionsFactory().create()
+            options.allowEmptyCartridgeSlots = true
+            return subject.process(
+              getTestInput(),
+              testHierarchy as SockoNodeInterface,
+              options
+            )
+          }
+        )
+        .then(
+          value => {
+            return (value.getChildByName('socketTestCollectorMaxDepth0') as SockoNodeInterface).readContent()
+          }
+        )
+        .then(
+          value => {
+            chai.expect(
+              value
+            ).to.equal('>>><<<')
+          }
+        )
+    })
   }
 )

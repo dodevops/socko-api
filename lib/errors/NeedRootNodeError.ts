@@ -8,5 +8,6 @@ export class NeedRootNodeError extends AbstractError {
 
   constructor (node: Node) {
     super(`Node with name ${node.name} is not a root node`)
+    this.name = 'NeedRootNodeError'
   }
 }

@@ -9,5 +9,6 @@ export class ProcessCalledFromBucketNodeError extends AbstractError {
 
   constructor (node: SockoNodeInterface) {
     super(`Process was called from a bucket node: ${node.name}`)
+    this.name = 'ProcessCalledFromBucketNodeError'
   }
 }

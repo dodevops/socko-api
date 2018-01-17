@@ -36,4 +36,11 @@ export interface ProcessorOptionsInterface {
    */
   processCartridgeNode: (node: CartridgeNodeInterface) => Bluebird<CartridgeNodeInterface | SkippedNodeInterface>
 
+  /**
+   * Allow, that cartridge slots can be left empty when no cartridges can be found. The cartridge slot content will
+   * be set to an empty string. Otherwise an error is thrown.
+   */
+
+  allowEmptyCartridgeSlots: boolean
+
 }
