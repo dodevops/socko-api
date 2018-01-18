@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BucketNodeFactory | socko</title>
+	<title>NoCartridgeFoundError | socko</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/factories.html">factories</a>
+					<a href="../modules/errors.html">errors</a>
 				</li>
 				<li>
-					<a href="factories.bucketnodefactory.html">BucketNodeFactory</a>
+					<a href="errors.nocartridgefounderror.html">NoCartridgeFoundError</a>
 				</li>
 			</ul>
-			<h1>Class BucketNodeFactory</h1>
+			<h1>Class NoCartridgeFoundError</h1>
 		</div>
 	</div>
 </header>
@@ -72,7 +72,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Create a new <a href="../interfaces/nodes.bucketnodeinterface.html">BucketNodeInterface</a> implementation</p>
+						<p>No cartridges were found for a cartridge slot</p>
 					</div>
 				</div>
 			</section>
@@ -80,14 +80,13 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BucketNodeFactory</span>
+						<a href="errors.abstracterror.html" class="tsd-signature-type">AbstractError</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">NoCartridgeFoundError</span>
+							</li>
+						</ul>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/factories.factoryinterface.html" class="tsd-signature-type">FactoryInterface</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/nodes.bucketnodeinterface.html" class="tsd-signature-type">BucketNodeInterface</a><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -95,33 +94,84 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section tsd-is-external">
-							<h3>Methods</h3>
+							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="factories.bucketnodefactory.html#create" class="tsd-kind-icon">create</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external"><a href="errors.nocartridgefounderror.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited tsd-is-external">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static tsd-is-external"><a href="errors.nocartridgefounderror.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static tsd-is-external"><a href="errors.nocartridgefounderror.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static tsd-is-external"><a href="errors.nocartridgefounderror.html#stack" class="tsd-kind-icon">stack</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-external">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
-					<a name="create" class="tsd-anchor"></a>
-					<h3>create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.bucketnodeinterface.html" class="tsd-signature-type">BucketNodeInterface</a></li>
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>NoCartridge<wbr>Found<wbr>Error<span class="tsd-signature-symbol">(</span>slot<span class="tsd-signature-symbol">: </span><a href="../interfaces/nodes.cartridgeslotinterface.html" class="tsd-signature-type">CartridgeSlotInterface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="errors.nocartridgefounderror.html" class="tsd-signature-type">NoCartridgeFoundError</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/factories.factoryinterface.html">FactoryInterface</a>.<a href="../interfaces/factories.factoryinterface.html#create">create</a></p>
+								<p>Overrides <a href="errors.abstracterror.html">AbstractError</a>.<a href="errors.abstracterror.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/ce81bf7/lib/factories/BucketNodeFactory.ts#L10">lib/factories/BucketNodeFactory.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/dodevops/socko-api/blob/ce81bf7/lib/errors/NoCartridgeFoundError.ts#L7">lib/errors/NoCartridgeFoundError.ts:7</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/nodes.bucketnodeinterface.html" class="tsd-signature-type">BucketNodeInterface</a></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>slot: <a href="../interfaces/nodes.cartridgeslotinterface.html" class="tsd-signature-type">CartridgeSlotInterface</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="errors.nocartridgefounderror.html" class="tsd-signature-type">NoCartridgeFoundError</a></h4>
 						</li>
 					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-external">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static tsd-is-external">
+					<a name="message" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.message</p>
+						<ul>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:874</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static tsd-is-external">
+					<a name="name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.name</p>
+						<ul>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:873</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static tsd-is-external">
+					<a name="stack" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
+					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.stack</p>
+						<p>Overrides Error.stack</p>
+						<ul>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es6.d.ts:875</li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -143,10 +193,10 @@
 					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="../modules/builders.html">builders</a>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
+					<li class="current tsd-kind-external-module tsd-is-external">
 						<a href="../modules/errors.html">errors</a>
 					</li>
-					<li class="current tsd-kind-external-module tsd-is-external">
+					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="../modules/factories.html">factories</a>
 					</li>
 					<li class=" tsd-kind-external-module tsd-is-external">
@@ -163,43 +213,40 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="factories.branchnodefactory.html" class="tsd-kind-icon">Branch<wbr>Node<wbr>Factory</a>
+						<a href="errors.abstracterror.html" class="tsd-kind-icon">Abstract<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+						<a href="errors.invalidmergenode.html" class="tsd-kind-icon">Invalid<wbr>Merge<wbr>Node</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
+						<a href="errors.needrootnodeerror.html" class="tsd-kind-icon">Need<wbr>Root<wbr>Node<wbr>Error</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="factories.bucketnodefactory.html" class="tsd-kind-icon">Bucket<wbr>Node<wbr>Factory</a>
+						<a href="errors.nocartridgefounderror.html" class="tsd-kind-icon">No<wbr>Cartridge<wbr>Found<wbr>Error</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
-								<a href="factories.bucketnodefactory.html#create" class="tsd-kind-icon">create</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-external">
+								<a href="errors.nocartridgefounderror.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static tsd-is-external">
+								<a href="errors.nocartridgefounderror.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static tsd-is-external">
+								<a href="errors.nocartridgefounderror.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static tsd-is-external">
+								<a href="errors.nocartridgefounderror.html#stack" class="tsd-kind-icon">stack</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="factories.cartridgenodefactory.html" class="tsd-kind-icon">Cartridge<wbr>Node<wbr>Factory</a>
+						<a href="errors.processcalledfrombucketnodeerror.html" class="tsd-kind-icon">Process<wbr>Called<wbr>From<wbr>Bucket<wbr>Node<wbr>Error</a>
 					</li>
 					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="factories.cartridgeslotfactory.html" class="tsd-kind-icon">Cartridge<wbr>Slot<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="factories.outputnodefactory.html" class="tsd-kind-icon">Output<wbr>Node<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="factories.rootnodefactory.html" class="tsd-kind-icon">Root<wbr>Node<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="factories.simplenodefactory.html" class="tsd-kind-icon">Simple<wbr>Node<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="factories.skippednodefactory.html" class="tsd-kind-icon">Skipped<wbr>Node<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-external">
-						<a href="factories.socketnodefactory.html" class="tsd-kind-icon">Socket<wbr>Node<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-external">
-						<a href="../interfaces/factories.factoryinterface.html" class="tsd-kind-icon">Factory<wbr>Interface</a>
+						<a href="errors.processcalledfromoverridenodeerror.html" class="tsd-kind-icon">Process<wbr>Called<wbr>From<wbr>Override<wbr>Node<wbr>Error</a>
 					</li>
 				</ul>
 			</nav>

@@ -89,12 +89,16 @@ export class SocketNodeProcessor extends AbstractProcessor<SocketNodeInterface> 
                       cartridgeNodes => {
                         for (let cartridgeNode of cartridgeNodes) {
                           let found = false
-                          for (let eligibleCartridge of eligibleCartridges) {
-                            if (eligibleCartridge.name === cartridgeNode.name) {
-                              found = true
-                              eligibleCartridge.readContent = cartridgeNode.readContent
+                          eligibleCartridges = eligibleCartridges.map(
+                            eligibleCartridge => {
+                              if (eligibleCartridge.name === cartridgeNode.name) {
+                                found = true
+                                return cartridgeNode
+                              } else {
+                                return eligibleCartridge
+                              }
                             }
-                          }
+                          )
                           if (!found) {
                             eligibleCartridges.push(cartridgeNode)
                           }
