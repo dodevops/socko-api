@@ -1,6 +1,6 @@
 {
   "name": "socko-api",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "description": "Hierarchical Tree Weaver",
   "keywords": [
     "template",
@@ -50,7 +50,7 @@
     "remap-istanbul": "^0.9.5",
     "tslint": "^5.8.0",
     "tslint-config-standard": "^7.0.0",
-    "typedoc": "^0.9.0",
+    "typedoc": "^0.11.0",
     "typedoc-plugin-external-module-map": "^0.0.7",
     "typescript": "^2.6.2",
     "grunt-browserify": "^5.0.0",
