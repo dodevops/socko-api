@@ -13,6 +13,7 @@ export class CartridgeSlotFactory implements FactoryInterface<CartridgeSlotInter
     cartridgeInsertionPoint.maxDepth = -1
     cartridgeInsertionPoint.cartridgeContent = ''
     cartridgeInsertionPoint.cartridgePattern = '*'
+    cartridgeInsertionPoint.isEnvironmentSlot = false
     return cartridgeInsertionPoint
   }
 }

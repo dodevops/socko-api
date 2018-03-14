@@ -13,6 +13,7 @@ import { OutputNodeInterface } from '../lib/nodes/OutputNodeInterface'
 import { BranchNodeBuilder } from '../lib/builders/BranchNodeBuilder'
 import { ProcessorOptionsFactory } from '../lib/options/ProcessorOptionsFactory'
 import { SkippedNodeBuilder } from '../lib/builders/SkippedNodeBuilder'
+import { SocketNodeInterface } from '../lib/nodes/SocketNodeInterface'
 import chai = require('chai')
 import chaiAsPromised = require('chai-as-promised')
 import Bluebird = require('bluebird')
@@ -440,6 +441,70 @@ describe(
             chai.expect(
               value
             ).to.equal('>>><<<')
+          }
+        )
+    })
+    it('should support environment variables as slot content', function (): Bluebird<void> {
+      let hierarchy = getTestHierarchy()
+      let input = getTestInput()
+      return input.getNodeByPath('/_root/socketTest')
+        .then(
+          (socketNode: SocketNodeInterface) => {
+            socketNode.slots[0].isEnvironmentSlot = true
+            process.env.testCartridge1 = 'ENVCARTRIDGE'
+            let options = new ProcessorOptionsFactory().create()
+            return subject.process(
+              input,
+              hierarchy,
+              options
+            )
+          }
+        )
+        .then(
+          value => {
+            return (value.getChildByName('socketTest') as SockoNodeInterface).readContent()
+          }
+        )
+        .then(
+          value => {
+            chai.expect(
+              value
+            ).to.equal('>>>ENVCARTRIDGE<<<')
+          }
+        )
+    })
+    it('should break on missing environment variables', function (): Bluebird<void> {
+      let hierarchy = getTestHierarchy()
+      let input = getTestInput()
+      return input.getNodeByPath('/_root/socketTest')
+        .then(
+          (socketNode: SocketNodeInterface) => {
+            socketNode.slots[0].isEnvironmentSlot = true
+            delete process.env.testCartridge1
+            let options = new ProcessorOptionsFactory().create()
+            return chai.expect(subject.process(
+              input,
+              hierarchy,
+              options
+            )).to.be.rejectedWith(/No cartridges found for slot.*testCartridge1/)
+          }
+        )
+    })
+    it('should not break on missing environment variables when told so', function (): Bluebird<void> {
+      let hierarchy = getTestHierarchy()
+      let input = getTestInput()
+      return input.getNodeByPath('/_root/socketTest')
+        .then(
+          (socketNode: SocketNodeInterface) => {
+            socketNode.slots[0].isEnvironmentSlot = true
+            delete process.env.testCartridge1
+            let options = new ProcessorOptionsFactory().create()
+            options.allowEmptyCartridgeSlots = true
+            return chai.expect(subject.process(
+              input,
+              hierarchy,
+              options
+            )).to.be.fulfilled
           }
         )
     })

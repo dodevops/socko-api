@@ -13,6 +13,11 @@ export interface CartridgeSlotInterface {
   isCollector: boolean
 
   /**
+   * Is this slot referring to an environment variable?
+   */
+  isEnvironmentSlot: boolean
+
+  /**
    * The name of the cartridge to be inserted (ignored, when `isCollector` is true)
    */
   cartridgeName: string
