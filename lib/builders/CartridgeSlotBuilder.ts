@@ -5,10 +5,10 @@ import { CartridgeSlotFactory } from '../factories/CartridgeSlotFactory'
  * A builder for [[CartridgeSlotInterface]]s
  */
 export class CartridgeSlotBuilder {
-  private _cartridgeInsertionPoint: CartridgeSlotInterface
+  private _cartridgeSlot: CartridgeSlotInterface
 
   constructor () {
-    this._cartridgeInsertionPoint = new CartridgeSlotFactory().create()
+    this._cartridgeSlot = new CartridgeSlotFactory().create()
   }
 
   /**
@@ -17,7 +17,7 @@ export class CartridgeSlotBuilder {
    * @return {CartridgeSlotBuilder}
    */
   public withIsCollector (isCollector: boolean): CartridgeSlotBuilder {
-    this._cartridgeInsertionPoint.isCollector = isCollector
+    this._cartridgeSlot.isCollector = isCollector
     return this
   }
 
@@ -27,7 +27,7 @@ export class CartridgeSlotBuilder {
    * @return {CartridgeSlotBuilder}
    */
   public withCartridgeName (cartridgeName: string): CartridgeSlotBuilder {
-    this._cartridgeInsertionPoint.cartridgeName = cartridgeName
+    this._cartridgeSlot.cartridgeName = cartridgeName
     return this
   }
 
@@ -37,7 +37,7 @@ export class CartridgeSlotBuilder {
    * @return {CartridgeSlotBuilder}
    */
   public withCartridgePattern (cartridgePattern: string | RegExp): CartridgeSlotBuilder {
-    this._cartridgeInsertionPoint.cartridgePattern = cartridgePattern
+    this._cartridgeSlot.cartridgePattern = cartridgePattern
     return this
   }
 
@@ -47,7 +47,7 @@ export class CartridgeSlotBuilder {
    * @return {CartridgeSlotBuilder}
    */
   public withIndex (index: number): CartridgeSlotBuilder {
-    this._cartridgeInsertionPoint.index = index
+    this._cartridgeSlot.index = index
     return this
   }
 
@@ -57,7 +57,7 @@ export class CartridgeSlotBuilder {
    * @return {CartridgeSlotBuilder}
    */
   public withMaxDepth (maxDepth: number): CartridgeSlotBuilder {
-    this._cartridgeInsertionPoint.maxDepth = maxDepth
+    this._cartridgeSlot.maxDepth = maxDepth
     return this
   }
 
@@ -67,7 +67,12 @@ export class CartridgeSlotBuilder {
    * @return {CartridgeSlotBuilder}
    */
   public withCartridgeContent (cartridgeContent: string): CartridgeSlotBuilder {
-    this._cartridgeInsertionPoint.cartridgeContent = cartridgeContent
+    this._cartridgeSlot.cartridgeContent = cartridgeContent
+    return this
+  }
+
+  public withEnvironment (): CartridgeSlotBuilder {
+    this._cartridgeSlot.isEnvironmentSlot = true
     return this
   }
 
@@ -76,6 +81,6 @@ export class CartridgeSlotBuilder {
    * @return {CartridgeSlotInterface}
    */
   public build (): CartridgeSlotInterface {
-    return this._cartridgeInsertionPoint
+    return this._cartridgeSlot
   }
 }
