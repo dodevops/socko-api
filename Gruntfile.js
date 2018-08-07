@@ -2,49 +2,6 @@ module.exports = function (grunt) {
 
   var package = require('./package.json');
 
-  var browsers = [
-    {
-      browserName: 'firefox',
-      platform: 'Windows 10',
-      version: 'latest'
-    },
-    {
-      browserName: 'firefox',
-      platform: 'Windows 10',
-      version: 'latest-1'
-    },
-    {
-      browserName: 'firefox',
-      platform: 'Windows 10',
-      version: 'latest-2'
-    },
-    {
-      browserName: 'googlechrome',
-      platform: 'Windows 10',
-      version: 'latest'
-    },
-    {
-      browserName: 'googlechrome',
-      platform: 'Windows 10',
-      version: 'latest-1'
-    },
-    {
-      browserName: 'googlechrome',
-      platform: 'Windows 10',
-      version: 'latest-2'
-    },
-    {
-      browserName: 'MicrosoftEdge',
-      platform: 'Windows 10',
-      version: '15.15063'
-    },
-    {
-      browserName: 'safari',
-      platform: 'macOS 10.12',
-      version: '11.0'
-    }
-  ]
-
   grunt.initConfig({
     tslint: {
       options: {
@@ -161,29 +118,9 @@ module.exports = function (grunt) {
         }
       },
     },
-    connect: {
-      server: {
-        options: {
-          base: '',
-          port: 9999
-        }
-      }
-    },
-    'saucelabs-mocha': {
-      browser: {
-        options: {
-          urls: [
-            'http://saucelabs.test:9999/test/test.browser.html'
-          ],
-          browsers: browsers,
-          testname: 'socko-api browser test',
-          throttled: 1,
-          sauceConfig: {
-            'video-upload-on-pass': false
-          },
-          public: 'public restricted',
-          build: package.version
-        }
+    webdriver: {
+      default: {
+        configFile: 'wdio.conf.js'
       }
     },
     coveralls: {
@@ -207,9 +144,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-typedoc')
   grunt.loadNpmTasks('grunt-browserify')
   grunt.loadNpmTasks('grunt-coveralls')
-  grunt.loadNpmTasks('grunt-contrib-connect')
-  grunt.loadNpmTasks('grunt-saucelabs')
   grunt.loadNpmTasks('grunt-exec')
+  grunt.loadNpmTasks('grunt-webdriver')
+
 
   grunt.registerTask(
     'build',
@@ -264,8 +201,7 @@ module.exports = function (grunt) {
       'build',
       'browserify:test',
       'exec:uglifyTest',
-      'connect',
-      'saucelabs-mocha:browser'
+      'webdriver'
     ]
   )
 

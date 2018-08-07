@@ -1,8 +1,9 @@
 # SOCKO! - Hierarchical Tree Weaver
 
-[![Build Status](https://saucelabs.com/buildstatus/socko-api)](https://saucelabs.com/beta/builds/d5873708d20f42289856389b27b6ec13) [![Build Status](https://travis-ci.org/dodevops/socko-api.svg?branch=master)](https://travis-ci.org/dodevops/socko-api) [![Coverage Status](https://coveralls.io/repos/github/dodevops/socko-api/badge.svg?branch=master)](https://coveralls.io/github/dodevops/socko-api?branch=master) [![npm](https://img.shields.io/npm/v/socko-api.svg)](https://www.npmjs.com/package/socko-api)
+[![TestingBot Test Status](https://testingbot.com/buildstatus/d87072aa349553678b4951d26e743159)](https://testingbot.com/builds/d87072aa349553678b4951d26e743159)
+ [![Build Status](https://travis-ci.org/dodevops/socko-api.svg?branch=master)](https://travis-ci.org/dodevops/socko-api) [![Coverage Status](https://coveralls.io/repos/github/dodevops/socko-api/badge.svg?branch=master)](https://coveralls.io/github/dodevops/socko-api?branch=master) [![npm](https://img.shields.io/npm/v/socko-api.svg)](https://www.npmjs.com/package/socko-api)
 
-[![Build Status](https://saucelabs.com/browser-matrix/socko-api.svg)](https://saucelabs.com/beta/builds/d5873708d20f42289856389b27b6ec13)
+[![Browser Matrix](https://testingbot.com/buildmatrix/d87072aa349553678b4951d26e743159)](https://testingbot.com/builds/d87072aa349553678b4951d26e743159)
 
 ## Introduction
 
