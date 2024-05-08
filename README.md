@@ -1,3 +1,7 @@
+** SOCKO IS ARCHIVED **
+
+I'm sorry, but we're archiving the Socko project because it isn't maintained anymore and the usage for it somehow outlived itself. 
+
 # SOCKO! - Hierarchical Tree Weaver
 
 [![TestingBot Test Status](https://testingbot.com/buildstatus/d87072aa349553678b4951d26e743159)](https://testingbot.com/builds/d87072aa349553678b4951d26e743159)
