@@ -1,4 +1,4 @@
-** SOCKO IS ARCHIVED **
+**SOCKO IS ARCHIVED**
 
 I'm sorry, but we're archiving the Socko project because it isn't maintained anymore and the usage for it somehow outlived itself. 
 
